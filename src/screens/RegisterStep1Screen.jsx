@@ -11,7 +11,7 @@ export default function RegisterStep1Screen() {
         <Text style={styles.title}>Register</Text>
         <TextInput style={styles.input} value="jane@example.com" />
         <TextInput style={styles.input} value="••••••••••••" />
-        <Button label="Next" />
+        <Button label="NEXT" />
       </View>
     </View>
   );
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: 17,
     marginBottom: 16,
   },
-})
+});
