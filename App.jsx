@@ -3,9 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import TagMainScreen from './src/screens/TagMainScreen';
 import TagEditScreen from './src/screens/TagEditScreen';
+import TagOptionScreen from './src/screens/TagOptionScreen';
 
 export default function App() {
   return (
-    <TagEditScreen />
+    <TagOptionScreen />
   );
 }
