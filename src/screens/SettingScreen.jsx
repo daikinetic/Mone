@@ -70,7 +70,9 @@ const styles = StyleSheet.create({
     color: '#EC1A66',
   },
   footer: {
-    paddingTop: 17,
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 16,
   },
   footerLogo: {
     fontSize: 50,

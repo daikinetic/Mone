@@ -8,11 +8,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import StartScreen from './src/screens/StartScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import SettingScreen from './src/screens/SettingScreen';
+import SettingTimeScreen from './src/screens/SettingTimeScreen';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <SettingScreen />
+      <SettingTimeScreen />
       {/* <Text>Open up App.js to start working on your app!</Text> */}
       <StatusBar style="light" />
     </View>
