@@ -13,7 +13,7 @@ import SettingTimeScreen from './src/screens/SettingTimeScreen';
 export default function App() {
   return (
     <View style={styles.container}>
-      <HomeScreen />
+      <SettingTimeScreen />
       {/* <Text>Open up App.js to start working on your app!</Text> */}
       <StatusBar style="light" />
     </View>

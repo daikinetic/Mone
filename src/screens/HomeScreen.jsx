@@ -5,7 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
 import AppBar from '../components/AppBar';
-import ButtonWithLogo from '../components/ButtonWithLogo';
+// import ButtonWithLogo from '../components/ButtonWithLogo';
 
 export default function HomeScreen() {
   return (
@@ -39,11 +39,13 @@ export default function HomeScreen() {
         </View>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.logo}>□</Text>
-        <Text style={styles.mone}>mone</Text>
-      </View>
-      <View style={styles.footLineContainer}>
-        <View style={styles.footLine}></View>
+        <View style={styles.footerLogo}>
+          <Text style={styles.logo}>□</Text>
+          <Text style={styles.mone}>mone</Text>
+        </View>
+        <View style={styles.footLineContainer}>
+          <View style={styles.footLine}></View>
+        </View>
       </View>
     </View>
   );
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
   },
   greet: {
+    height: 60,
     marginVertical: 20,
     alignItems: 'center',
   },
@@ -144,18 +147,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     lineHeight: 40,
   },
-  styleContainer: {
-    backgroundColor: '#ffffff',
-    borderColor: '#EC1A66',
-    borderWidth: 2,
-  },
-  styleLabel: {
-    color: '#EC1A66',
-  },
   footer: {
+    flex: 1,
+  },
+  footerLogo: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginVertical: 40,
+    flex: 1,
+    alignItems: 'center',
   },
   logo: {
     fontSize: 48,
@@ -168,6 +167,7 @@ const styles = StyleSheet.create({
   },
   footLineContainer: {
     alignItems: 'center',
+    paddingBottom: 8,
   },
   footLine: {
     backgroundColor: '#EC1A66',
