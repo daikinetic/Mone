@@ -1,16 +1,28 @@
-import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View, Text, TextInput, StyleSheet
+} from 'react-native';
 
 import Button from '../components/Button';
 
 export default function RegisterStep2Screen() {
+  const [username, setUsername] = useState('');
+
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
         <Text style={styles.back}>↰</Text>
         <Text style={styles.title}>Register</Text>
-        <TextInput style={styles.input} value="the_jane" />
-        <Button label="SIGN UP" />
+        <TextInput
+          style={styles.input}
+          value={username}
+          onChangeText={(text) => { setUsername(text); }}
+          autoCapitalize="none"
+          placeholder="username"
+        />
+        <Button
+          label="SIGN UP"
+        />
         <Text style={styles.footer}>By signing up, you agree to Photo's Terms of Service and Privacy Policy.</Text>
       </View>
     </View>
