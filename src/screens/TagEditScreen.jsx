@@ -4,6 +4,9 @@ import { View, StyleSheet, Text } from "react-native";
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
 
+import { Feather } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons'; 
+
 export default function TagMainScreen() {
     return (
         <View style={styles.container}>
@@ -11,7 +14,9 @@ export default function TagMainScreen() {
                 <TagHeader />
                 <View style={styles.tagBody}>
                     <DefaultTag />
-                        <Text style={styles.tagAdditionIcon}>+</Text>
+                        <View style={styles.tagAdditionIcon}>
+                            <Feather name="plus" size={32} color="white" />
+                        </View>
                     <DefaultTag />
                     <DefaultTag />
                     <DefaultTag />
@@ -22,10 +27,10 @@ export default function TagMainScreen() {
             </View>
             <View style={styles.tagFooter}>
                 <View style={styles.homeButton}>
-
+                    <Entypo name="home" size={32} color="white" />
                 </View>
                 <View style={styles.editButton}>
-
+                    <Feather name="check" size={32} color="white" />
                 </View>
             </View>
             <View style={styles.resumeButton}>
@@ -33,10 +38,10 @@ export default function TagMainScreen() {
 
                 </View>
                 <View style={styles.redCircle}>
-
+                   
                 </View>
                 <View style={styles.rightTriangle}>
-
+                    <Entypo name="triangle-right" size={32} color="white" />
                 </View>
             </View>
         </View>
