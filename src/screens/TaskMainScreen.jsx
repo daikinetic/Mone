@@ -55,6 +55,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#cacdc1",
     },
+    whiteMargin: {
+        backgroundColor: "#FFFFFF",
+        width:360,
+        height:150,
+        position:"absolute",
+        top:0,
+        left:0
+    },
     backgroundImage: {
         width:100,
         height:100,
@@ -136,7 +144,7 @@ const styles = StyleSheet.create({
         width:25,
         height:25,
         right:13,
-        top: 30
+        top: 28
     },
     barTriangle: {
         width:25,
@@ -149,7 +157,7 @@ const styles = StyleSheet.create({
         width: 35,
         height: 23,
         position: "absolute",
-        top:55,
+        top:53.5,
         right:10,
         flexDirection:"row",
         padding:0
