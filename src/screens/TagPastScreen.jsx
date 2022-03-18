@@ -127,5 +127,21 @@ const styles = StyleSheet.create({
         bottom: 45,
         left: 162,
         marginHorizontal: "auto"
-    }
+    },
+    homeButton: {
+        position: "absolute",
+        left:55,
+        bottom: 17,
+    },
+    editButton: {
+        position: "absolute",
+        right:55,
+        bottom:15
+    },
+    rightTriangle: {
+        elevation:3,
+        position: "absolute",
+        left:158.5,
+        bottom:38
+    },
 })

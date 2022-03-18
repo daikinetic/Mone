@@ -50,10 +50,10 @@ export default function TagOptionScreen() {
             </View>
             <View style={styles.tagFooter}>
                 <View style={styles.homeButton}>
-                    <Entypo name="home" size={32} color="white" />
+                    <Entypo name="home" size={48} color="white" />
                 </View>
                 <View style={styles.editButton}>
-                    <Feather name="check" size={32} color="white" />
+                    <Feather name="check" size={55} color="white" />
                 </View>
             </View>
             <View style={styles.resumeButton}>
@@ -64,7 +64,7 @@ export default function TagOptionScreen() {
 
                 </View>
                 <View style={styles.rightTriangle}>
-                    <Entypo name="triangle-right" size={32} color="white" />
+                    <Entypo name="triangle-right" size={75} color="white" />
                 </View>
             </View>
         </View>
@@ -199,5 +199,21 @@ const styles = StyleSheet.create({
         bottom: 45,
         left: 162,
         marginHorizontal: "auto"
-    }
+    },
+    homeButton: {
+        position: "absolute",
+        left:55,
+        bottom: 17,
+    },
+    editButton: {
+        position: "absolute",
+        right:55,
+        bottom:15
+    },
+    rightTriangle: {
+        elevation:3,
+        position: "absolute",
+        left:158.5,
+        bottom:38
+    },
 })
