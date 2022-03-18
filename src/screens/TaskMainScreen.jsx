@@ -19,6 +19,8 @@ export default function TaskMainScreen () {
             <View style={styles.leftBar}>
                 <View style={styles.barL}></View>
             </View>
+            <View style={styles.barCircle}>
+            </View>
             <View style={styles.rightBar}>
                 <View style={styles.barR}></View>
             </View>
@@ -108,6 +110,17 @@ const styles = StyleSheet.create({
         left:25,
         bottom: 90,
         borderRadius: 5
+    },
+    barCircle: {
+        backgroundColor:"#ffffff",
+        width:22,
+        height:22,
+        borderRadius:11,
+        borderWidth:2,
+        borderColor:"#EC1A66",
+        position:"absolute",
+        top:140,
+        left:16.5,
     },
     rightBar: {
         backgroundColor: "#ACB3BF",
