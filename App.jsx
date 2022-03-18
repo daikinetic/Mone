@@ -1,3 +1,6 @@
+import React from "react";
+import { View, StyleSheet } from "react-native";
+
 import TagMainScreen from "./src/screens/TagMainScreen";
 import TagEditScreen from "./src/screens/TagEditScreen";
 import TagOptionScreen from "./src/screens/TagOptionScreen";
@@ -9,4 +12,11 @@ export default function App () {
         <View style={styles.container}>
             <TaskMainScreen />
         </View>
-    );  
+    );
+}
+
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+    }
+});
