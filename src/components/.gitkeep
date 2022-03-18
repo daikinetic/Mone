@@ -21,3 +21,14 @@ var data = [{
     } ],
     
 }]
+
+var user = [{
+    "id": 1,
+    "name": "tanaka",
+    "password": "4119119s"
+},
+{
+    "id": 2,
+    "name": "sato",
+    "password": "4118118t"   
+}]
