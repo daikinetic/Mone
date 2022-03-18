@@ -1,29 +1,41 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Switch } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 import AppBar from '../components/AppBar';
 
 export default function SettingTimeScreen() {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
   return (
     <View style={styles.container}>
-      <AppBar name="⚙"/>
+      <AppBar name="gear"/>
       <View style={styles.imageContainer}>
         <View style={styles.image}>
-          <Text style={styles.imageIcon}>🕒</Text>
+          <Ionicons style={styles.time} name="timer-outline" size={100} color="#EC1A66" />
           <Text style={styles.imageText}>Time Alert</Text>
         </View>
       </View>
       <View>
         <View style={styles.switch}>
-          <Text style={styles.ball}>●</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#767577" }}
+            thumbColor={isEnabled ? "#EC1A66" : "#f4f3f4"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+          />
         </View>
-        <Text style={styles.on}>ON</Text>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.footerLogo}>⚙</Text>
+        <FontAwesome style={styles.footerLogo} name="gear" size={50} color="#EC1A66" />
         <Text style={styles.footerText}>Back</Text>
+        <View style={styles.footLineContainer}>
+          <View style={styles.footLine}></View>
+        </View>
       </View>
-      <View style={styles.footLine}></View>
     </View>
   );
 }
@@ -31,7 +43,6 @@ export default function SettingTimeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
   },
   footLine: {
     backgroundColor: '#EC1A66',
@@ -48,12 +59,12 @@ const styles = StyleSheet.create({
     width: 260,
     height: 230,
     marginTop: 40,
+    marginHorizontal: 30,
   },
   image: {
     alignItems: 'center',
   },
-  imageIcon: {
-    fontSize: 80,
+  time: {
     marginTop: 25,
   },
   imageText: {
@@ -63,38 +74,28 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   switch: {
-    borderColor: '#EC1A66',
-    borderWidth: 2,
-    borderRadius: 35,
-    width: 140,
-    height: 75,
     marginTop: 30,
-    justifyContent: 'center',
-  },
-  ball: {
-    color: '#EC1A66',
-    fontSize: 50,
-    paddingLeft: 13,
-  },
-  on: {
-    color: '#EC1A66',
-    fontSize: 20,
-    fontWeight: 'bold',
-    paddingLeft: 25,
-    paddingTop: 10,
+    alignItems: 'center',
   },
   footer: {
+    flex: 1,
     alignItems: 'center',
-    position: 'absolute',
-    bottom: 16,
-  },
-  footerLogo: {
-    fontSize: 50,
-    color: '#EC1A66',
+    justifyContent: 'flex-end',
+    bottom: 8,
   },
   footerText: {
     color: '#EC1A66',
     lineHeight: 15,
     fontWeight: 'bold',
+  },
+  footLineContainer: {
+    alignItems: 'center',
+    marginTop: 5,
+  },
+  footLine: {
+    backgroundColor: '#EC1A66',
+    width: 135,
+    height: 5,
+    borderRadius: 10,
   },
 });

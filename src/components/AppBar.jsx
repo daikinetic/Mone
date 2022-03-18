@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function AppBar(props) {
   const { name } = props;
   return (
     <View style={styles.appbar}>
       <View style={styles.appbarInner}>
-        <Text style={styles.appbarLogo}>{name}</Text>
+        <FontAwesome name={name} style={styles.appbarLogo} size={32} color="white" />
       </View>
     </View>
   );
@@ -24,8 +25,6 @@ const styles = StyleSheet.create({
   },
   appbarLogo: {
     marginTop: 8,
-    fontSize: 32,
-    color: '#ffffff',
     fontWeight: 'bold',
   },
 });
