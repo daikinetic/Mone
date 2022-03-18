@@ -4,6 +4,8 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import { Feather } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
 import { FontAwesome5 } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons';
 import { borderColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 export default function TaskMainScreen () {
@@ -36,14 +38,14 @@ export default function TaskMainScreen () {
                 <Entypo name="triangle-up" size={28} color="#EC1A66" />
             </View>
             <View style={styles.bottomArea}>
-                <View style={styles.leftTriangle}>
-                    <Entypo name="triangle-left" size={56} color="#EC1A66" />
+                <View style={styles.leftArrow}>
+                    <AntDesign name="arrowleft" size={42} color="#EC1A66" />
                 </View>
-                <View style={styles.rightTriangle}>
-                    <Entypo name="triangle-right" size={56} color="#EC1A66" />
+                <View style={styles.rightArrow}>
+                    <AntDesign name="arrowright" size={42} color="#EC1A66" />
                 </View>
                 <View style={styles.stopIcon}>
-                    <FontAwesome5 name="stop-circle" size={40} color="#EC1A66" />
+                    <Ionicons name="stop-circle-outline" size={48} color="#EC1A66" />
                 </View>
             </View>
         </View>
@@ -73,13 +75,13 @@ const styles = StyleSheet.create({
     centerBox :{
         position: "absolute",
         width:250,
-        height:65,
+        height:60,
         backgroundColor:"#ffffff",
         borderWidth: 1.5,
         borderColor: "#EC1A66",
         borderRadius:20,
         left:55,
-        top:215,
+        top:225,
         alignItems:"center",
         justifyContent:"center"
     },
@@ -98,17 +100,17 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         justifyContent: "center"
     },
-    leftTriangle: {
+    leftArrow: {
         position:"absolute",
-        left:20
+        left:30
     },
-    rightTriangle: {
+    rightArrow: {
         position:"absolute",
-        right:20
+        right:30
     },
     stopIcon: {
         position:"absolute",
-        left:118
+        left:115.5
     },
     leftBar: {
         backgroundColor: "#EC1A66",
