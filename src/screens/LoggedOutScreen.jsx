@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {
+  View, Text, StyleSheet, TouchableOpacity
+} from 'react-native';
 
 import Button from '../components/Button';
 
@@ -7,19 +9,16 @@ export default function LoggedOutScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
-        <Text style={styles.logoImage}>□ </Text>
+        <Text style={styles.logoImage}>□</Text>
         <Text style={styles.logoText}>mone</Text>
       </View>
       <View style={styles.footer}>
-        <Button
-          label="LOG IN"
-          styleContainer={styles.footerLeftContainer}
-          styleLabel={styles.footerLeftLabel}
-        />
-        <Button
-          label="REGISTER"
-          styleContainer={styles.footerRightContainer}
-        />
+        <TouchableOpacity style={styles.leftButton}>
+          <Text style={styles.login}>LOG IN</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.rightButton}>
+          <Text style={styles.register}>REGISTER</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -32,10 +31,9 @@ const styles = StyleSheet.create({
   logo: {
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'blue',
-    paddingHorizontal: 86,
-    paddingTop: 280,
-    paddingBottom: 220,
+    height: '85%',
   },
   logoImage: {
     fontSize: 48,
@@ -46,23 +44,54 @@ const styles = StyleSheet.create({
     lineHeight: 54,
   },
   footer: {
+    flex: 1,
+    // backgroundColor:'green',
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    paddingVertical: 20,
   },
-  footerLeftContainer: {
-    width: 145,
-    height: 52,
+  leftButton: {
     backgroundColor: '#ffffff',
     borderColor: '#EC1A66',
     borderWidth: 2,
+    borderRadius: 8,
+    height: '50%',
+    width: '47%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  footerLeftLabel: {
+  login: {
     color: '#EC1A66',
+    fontSize: 15,
+    fontWeight: 'bold',
   },
-  footerRightContainer: {
-    width: 130,
-    height: 52,
+  rightButton: {
+    backgroundColor: '#EC1A66',
+    borderRadius: 8,
+    height: '50%',
+    width: '47%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  register: {
+    color: '#ffffff',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  // footerLeftContainer: {
+  //   width: 145,
+  //   height: 52,
+  //   backgroundColor: '#ffffff',
+  //   borderColor: '#EC1A66',
+  //   borderWidth: 2,
+  // },
+  // footerLeftLabel: {
+  //   color: '#EC1A66',
+  // },
+  // footerRightContainer: {
+  //   width: 130,
+  //   height: 52,
+  // },
 });

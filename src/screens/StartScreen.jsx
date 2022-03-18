@@ -6,7 +6,7 @@ import AppBar from '../components/AppBar';
 export default function StartScreen() {
   return (
     <View style={styles.container}>
-      <AppBar name="□" />
+      <AppBar name="home" />
       <View style={styles.inner}>
         <Text style={styles.logo}>□</Text>
         <Text style={styles.mone}>mone</Text>
