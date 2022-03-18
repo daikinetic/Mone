@@ -1,4 +1,4 @@
-/* タグのサンプルデータ（ myFirstRutine のみ使用する ） */
+// タグのサンプルデータ（ myFirstRutine のみ使用する ） //
 
 var data = [{
     "myFirstRutine": [  {
@@ -66,7 +66,7 @@ var data = [{
         "taskTime": 30,
         "processTime": ,
     },
-    
+    /*
     "mySecondRutine": [ {
         "taskName": "水を500ml飲む",
         "taskTime": 5,
@@ -76,11 +76,13 @@ var data = [{
         "taskName": "カーテンを空けて陽にあたる",
         "taskTime": 6,
         "processTime": ,
-    } ],
+    } ], */
     
 }]
 
 // user 登録 //
+
+/*
 var user = [{
     "id": 1,
     "name": "tanaka",
@@ -90,4 +92,4 @@ var user = [{
     "id": 2,
     "name": "sato",
     "password": "4118118t"   
-}]
+}] */
