@@ -13,7 +13,7 @@ export default function TaskMainScreen () {
         <View style={styles.container}>
             <View style={styles.whiteMargin}>
             </View>
-            <Image style={styles.backgroundImage} />
+            <Image style={styles.backgroundImage} source={require("../static/Rectangle.png")} />
 
             <View style={styles.centerBox}>
                 <Text style={styles.taskText}>今日の服を決める</Text>
@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
         left:0
     },
     backgroundImage: {
-        width:100,
-        height:100,
+        width:360,
+        height:442,
         position:"absolute",
         bottom:0,
         left:0,
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     leftBar: {
         backgroundColor: "#EC1A66",
         width: 5,
-        height:425,
+        height:455,
         position: "absolute",
         left:25,
         bottom: 90,
