@@ -25,6 +25,11 @@ export default function TaskMainScreen () {
             <View style={styles.flag}>
                 <Feather name="flag" size={24} color="#EC1A66" />
             </View>
+            <View style={styles.time}>
+                <Text style={styles.timeChild}>3</Text>
+                <Text style={styles.slash}>／</Text>
+                <Text style={styles.timeMother}>10</Text>
+            </View>
             <View style={styles.barTriangle}>
                 <Entypo name="triangle-up" size={28} color="#EC1A66" />
             </View>
@@ -126,7 +131,37 @@ const styles = StyleSheet.create({
         position: "absolute",
         right:16.5,
         bottom:235
-    }
+    },
+    time: {
+        width: 35,
+        height: 23,
+        position: "absolute",
+        top:55,
+        right:10,
+        flexDirection:"row",
+        padding:0
+    },
+    timeChild: {
+        color:"#EC1A66",
+        position:"absolute",
+        top:-4,
+        left:5,
+        fontWeight:"bold"
+    },
+    slash: {
+        color:"#EC1A66",
+        position:"absolute",
+        fontSize:18,
+        top:-1,
+        left:5,
+    },
+    timeMother: {
+        color:"#EC1A66",
+        position:"absolute",
+        bottom:-1,
+        right:3,
+        fontWeight:"bold"
+    },
 
 
 })
