@@ -25,6 +25,9 @@ export default function TaskMainScreen () {
             <View style={styles.flag}>
                 <Feather name="flag" size={24} color="#EC1A66" />
             </View>
+            <View style={styles.barTriangle}>
+                <Entypo name="triangle-up" size={28} color="#EC1A66" />
+            </View>
             <View style={styles.bottomArea}>
                 <View style={styles.leftTriangle}>
                     <Entypo name="triangle-left" size={56} color="#EC1A66" />
@@ -109,7 +112,6 @@ const styles = StyleSheet.create({
         right:25,
         bottom: 90,
         borderRadius: 5,
-        
     },
     flag: {
         position: "absolute",
@@ -118,6 +120,13 @@ const styles = StyleSheet.create({
         right:13,
         top: 30
     },
+    barTriangle: {
+        width:25,
+        height:25,
+        position: "absolute",
+        right:16.5,
+        bottom:235
+    }
 
 
 })
