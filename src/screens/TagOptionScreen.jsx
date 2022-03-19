@@ -78,20 +78,68 @@ const styles = StyleSheet.create({
     },
     tagArea: {
         margin: 1,
-        padding: 20,
-        height: 650,
+        padding: "4.5%",
+        height: "88%",
     },
     tagBody: {
-        height: 565,
-        marginTop: 18,
+        height: "115%",
+        marginTop: "5.7%",
+    },
+    tagFooter: {
+        height: "12%",
+        backgroundColor: "#EC1A66",
+        justifyContent:"center",
+    },
+    homeButton: {
+        position: "absolute",
+        justifyContent:"center",
+        left:"15%",
+    },
+    editButton: {
+        position: "absolute",
+        justifyContent:"center",
+        right:"15%",
+    },
+    resumeButton: {
+        width:"100%",
+        height: "20%",
+        position: "absolute",
+        bottom: "1%",
+        justifyContent:"center",
+        alignItems: "center"
+    },
+    whiteCircle: {
+        width: 75,
+        height: 75,
+        backgroundColor: "#ffffff",
+        borderRadius: 37.5,
+        elevation: 1.5,
+        position: "absolute",
+        bottom: 40,
+        marginHorizontal: "auto"
+    },
+    redCircle: {
+        width: 65,
+        height: 65,
+        backgroundColor: "#EC1A66",
+        borderRadius: 32.5,
+        elevation: 1.6,
+        position: "absolute",
+        bottom: 45,
+        marginHorizontal: "auto"
+    },
+    rightTriangle: {
+        elevation:3,
+        position: "absolute",
+        bottom:38
     },
     optionsContainer: {
         position: "absolute",
         right: 0,
-        top: 150,
+        top: "33%",
         flexDirection: "column",
         elevation:3,
-        width:230,
+        width:"68%",
     },
     optionTyping: {
         flexDirection: "row",
@@ -173,47 +221,5 @@ const styles = StyleSheet.create({
         color: "#EC1A66",
         fontSize:25,
         elevation:3,
-    },
-    tagFooter: {
-        height: 85,
-        backgroundColor: "#EC1A66",
-    },
-    whiteCircle: {
-        width: 75,
-        height: 75,
-        backgroundColor: "#ffffff",
-        borderRadius: 37.5,
-        elevation: 1.5,
-        position: "absolute",
-        bottom: 40,
-        left: 157,
-        marginHorizontal: "auto"
-    },
-    redCircle: {
-        width: 65,
-        height: 65,
-        backgroundColor: "#EC1A66",
-        borderRadius: 32.5,
-        elevation: 1.6,
-        position: "absolute",
-        bottom: 45,
-        left: 162,
-        marginHorizontal: "auto"
-    },
-    homeButton: {
-        position: "absolute",
-        left:55,
-        bottom: 17,
-    },
-    editButton: {
-        position: "absolute",
-        right:55,
-        bottom:15
-    },
-    rightTriangle: {
-        elevation:3,
-        position: "absolute",
-        left:158.5,
-        bottom:38
     },
 })
