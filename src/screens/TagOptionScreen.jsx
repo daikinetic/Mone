@@ -18,7 +18,9 @@ export default function TagOptionScreen() {
                     <View style={styles.optionsContainer}>
                         <View style={styles.optionTyping}>
                             <View style={styles.optionsArrow}>
-                                <Text style={styles.optionsArrowIcon}>▶</Text>
+                                <View style={styles.optionsArrowIcon}>
+                                    <Entypo name="triangle-right" size={24} color="#ec1a66" />
+                                </View>
                             </View>
                             <View style={styles.optionTypingBox}>
                                 <Text style={styles.optionTypingText}>そのまま入力する</Text>
@@ -26,7 +28,9 @@ export default function TagOptionScreen() {
                         </View>
                         <View style={styles.optionPast}>
                             <View style={styles.optionsArrow}>
-                                <Text style={styles.optionsArrowIcon}>▶</Text>
+                                <View style={styles.optionsArrowIcon}>
+                                    <Entypo name="triangle-right" size={24} color="#ec1a66" />
+                                </View>
                             </View>
                             <View style={styles.optionPastBox}>
                                 <Text style={styles.optionPastText}>過去のタグから選ぶ</Text>
@@ -34,7 +38,9 @@ export default function TagOptionScreen() {
                         </View>
                         <View style={styles.optionDelete}>
                             <View style={styles.optionsArrow}>
-                                <Text style={styles.optionsArrowIcon}>▶</Text>
+                                <View style={styles.optionsArrowIcon}>
+                                    <Entypo name="triangle-right" size={24} color="#ec1a66" />
+                                </View>
                             </View>
                             <View style={styles.optionDeleteBox}>
                                 <Text style={styles.optionDeleteText}>このタグを消去する</Text>
@@ -158,6 +164,7 @@ const styles = StyleSheet.create({
     },
     optionTypingBox: {
         elevation:3,
+        marginLeft: "7.5%"
     },
     optionTypingText: {
         color: "#EC1A66",
@@ -218,8 +225,6 @@ const styles = StyleSheet.create({
         elevation:3,
     },
     optionsArrowIcon: {
-        color: "#EC1A66",
-        fontSize:25,
         elevation:3,
     },
 })
