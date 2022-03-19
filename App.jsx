@@ -10,25 +10,26 @@ import StartScreen from './src/screens/StartScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import SettingScreen from './src/screens/SettingScreen';
 import SettingTimeScreen from './src/screens/SettingTimeScreen';
+import TimerSampleScreen from './src/screens/TimerSampleScreen';
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyA7dk0v-m25r9tX8AYQL9PxJik7LNtaJao",
-//   authDomain: "mone-6e841.firebaseapp.com",
-//   projectId: "mone-6e841",
-//   storageBucket: "mone-6e841.appspot.com",
-//   messagingSenderId: "742955431893",
-//   appId: "1:742955431893:web:ea6f4a4d8010632a292f5c"
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyA7dk0v-m25r9tX8AYQL9PxJik7LNtaJao",
+  authDomain: "mone-6e841.firebaseapp.com",
+  projectId: "mone-6e841",
+  storageBucket: "mone-6e841.appspot.com",
+  messagingSenderId: "742955431893",
+  appId: "1:742955431893:web:ea6f4a4d8010632a292f5c"
+};
 
-// if (firebase.apps.length === 0) {
-//   firebase.initializeApp(firebaseConfig);
-// }
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <RegisterStep1Screen />
-      <StatusBar style="light" />
+      <TimerSampleScreen />
+      <StatusBar style="dark" />
     </View>
   );
 }
