@@ -150,11 +150,18 @@ export default function TagPastScreen() {
                     <View style={styles.pastTagPlace}>
                         <Text style={styles.pastTagText}>今日の服を決める</Text>
                     </View>
+                    <View style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </View>
+                    <View style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </View>
                 </View>
             </View>
-            <View style={styles.tagFooter}></View>
-            <View style={styles.homeButton}>
-                <Entypo name="home" size={48} color="white" />
+            <View style={styles.tagFooter}>
+                <View style={styles.homeButton}>
+                    <Entypo name="home" size={48} color="white" />
+                </View>
             </View>
         </View>
     );
@@ -166,7 +173,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#acb3bf',
     },
     leftContainer: {
-        width:180,
+        width:"50%",
         height:700,
         backgroundColor: "#acb3bf",
         position: "absolute",
@@ -269,7 +276,7 @@ const styles = StyleSheet.create({
         bottom:-1.5
     },
     rightContainer: {
-        width:180,
+        width:"50%",
         height:700,
         backgroundColor: "#EC1A66",
         position: "absolute",
@@ -343,14 +350,14 @@ const styles = StyleSheet.create({
     },
     tagFooter: {
         height: 85,
-        width: 360,
+        width: "100%",
         position: "absolute",
         bottom: 0,
         backgroundColor: "#EC1A66",
+        alignItems: "center",
+        justifyContent: "center"
     },
     homeButton: {
-        position: "absolute",
-        left: 156,
-        bottom: 17,
+
     },
 })
