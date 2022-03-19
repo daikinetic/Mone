@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from 'react-native';
-import firebase from 'firebase';
+import { View, StyleSheet } from "react-native";
 
 import RegisterStep1Screen from './src/screens/RegisterStep1Screen';
 import RegisterStep2Screen from './src/screens/RegisterStep2Screen';
@@ -35,8 +34,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#ffffff'
+    container:{
+        flex:1,
     }
-  })
+});

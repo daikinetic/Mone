@@ -1,11 +1,13 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ScrollView } from "react-native";
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
 
 import { Feather } from '@expo/vector-icons'; 
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+
 
 export default function TagMainScreen() {
     return (
@@ -27,7 +29,7 @@ export default function TagMainScreen() {
                     <Entypo name="home" size={48} color="white" />
                 </View>
                 <View style={styles.editButton}>
-                    <Feather name="plus" size={55} color="white" />
+                    <MaterialCommunityIcons name="pencil" size={48} color="#ffffff" />
                 </View>
             </View>
             <View style={styles.resumeButton}>
@@ -38,7 +40,7 @@ export default function TagMainScreen() {
 
                 </View>
                 <View style={styles.rightTriangle}>
-                    <Entypo name="triangle-right" size={75} color="white" />
+                    <Entypo name="triangle-right" size={74.5} color="white" />
                 </View>
             </View>
         </View>
@@ -52,26 +54,35 @@ const styles = StyleSheet.create({
     },
     tagArea: {
         margin: 1,
-        padding: 20,
-        height: 650,
+        padding: "4.5%",
+        height: "88%",
     },
     tagBody: {
-        height: 565,
-        marginTop: 18,
+        height: "115%",
+        marginTop: "5.7%",
     },
     tagFooter: {
-        height: 85,
+        height: "12%",
         backgroundColor: "#EC1A66",
+        justifyContent:"center",
     },
     homeButton: {
         position: "absolute",
-        left:55,
-        bottom: 17,
+        justifyContent:"center",
+        left:"15%",
     },
     editButton: {
         position: "absolute",
-        right:55,
-        bottom:15
+        justifyContent:"center",
+        right:"15%",
+    },
+    resumeButton: {
+        width:"100%",
+        height: "20%",
+        position: "absolute",
+        bottom: "1%",
+        justifyContent:"center",
+        alignItems: "center"
     },
     whiteCircle: {
         width: 75,
@@ -81,7 +92,6 @@ const styles = StyleSheet.create({
         elevation: 1.5,
         position: "absolute",
         bottom: 40,
-        left: 157,
         marginHorizontal: "auto"
     },
     redCircle: {
@@ -92,13 +102,11 @@ const styles = StyleSheet.create({
         elevation: 1.6,
         position: "absolute",
         bottom: 45,
-        left: 162,
         marginHorizontal: "auto"
     },
     rightTriangle: {
         elevation:3,
         position: "absolute",
-        left:158.5,
         bottom:38
     },
 })

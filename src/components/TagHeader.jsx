@@ -22,18 +22,18 @@ export default function TagHeader() {
 const styles = StyleSheet.create ({
     tagHeader: {
         flexDirection: "row",
+        justifyContent:"center",
+        height: "12.5%",
     },
     tagTheme: {
-        paddingVertical:10,
-        paddingHorizontal: 15,
         borderWidth: 2,
         borderRadius: 20,
         borderColor: '#ffffff',
         backgroundColor: '#EC1A66',
         alignItems: "center",
         justifyContent: "center",
-        width: 265,
-        height: 70,
+        width: "77%",
+        height: "100%",
     },
     themeText: {
         color: '#ffffff',
@@ -41,21 +41,22 @@ const styles = StyleSheet.create ({
         fontWeight: "bold"
     },
     tagTimeAllContainer: {
-        paddingTop: 10,
-        paddingLeft: 14,
-        width: 78,
+        paddingTop: "3%",
+        paddingLeft: "2%",
+        width: "23%",
+        justifyContent:"center"
     },
     tagTimeAll: {
         textAlign: 'right',
-        paddingLeft:10,
+        paddingLeft:"14%",
         justifyContent: "center",
     },
     tagTimeAllText: {
         color: '#EC1A66',
-        fontSize: 30,
+        fontSize: 28,
         textAlign: "center",
         fontWeight: "bold",
-        height:32
+        height: 30
     },
     tagTimeAllMin:{
         
