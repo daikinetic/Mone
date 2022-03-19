@@ -13,28 +13,111 @@ export default function TagPastScreen() {
         <View style={styles.container}>
             <View style={styles.leftContainer}>
                 <View style={styles.tagHeader}>
-                    <View style={styles.tagTheme}>
+                    <View style={styles.tagThemePlace}>
                         <Text style={styles.tagThemeText}>my first rutine</Text>
-                    </View>
-                    <View style={styles.tagTimeAll}>
-                        <Text style={styles.tagTimeAllNumber}>120</Text>
-                        <Text style={styles.tagTimeAllmin}>min</Text>
+                        <View style={styles.tagTimeAll}>
+                            <Text style={styles.tagTimeAllNumber}>120</Text>
+                            <Text style={styles.tagTimeAllmin}> min</Text>
+                        </View>
                     </View>
                 </View>
-                <View style={styles.tagItem}>
-                    <View style={styles.tagTitle}>
-                        <Text style={styles.tagTitleText}>今日の服を決める</Text>
-                    </View>
-                    <View style={styles.tagTimes}> 
-                        <View style={styles.tagTime}>
-                            <Text style={styles.tagTimeText}>12</Text>
+                
+                <View style={styles.tagArea}>
+                    <View style={styles.tagItemArea}>
+                        <View style={styles.tagItem}>
+                            <Text style={styles.tagTitleText}>今日の服を決める</Text>
+                            <View style={styles.tagTime}>
+                                <Text style={styles.tagTimeText}>12</Text>
+                                <Text style={styles.tagMinText}> min</Text>
+                            </View>
                         </View>
-                    </View>   
-                    <View style={styles.tagMin}>   
-                        <Text style={styles.tagMinText}>min</Text>
+                        
+                        <View style={styles.triangle}>
+                            <Entypo name="triangle-down" size={28} color="#ec1a66" />
+                        </View>
+                    </View>
+                    <View style={styles.tagItemArea}>
+                        <View style={styles.tagItem}>
+                            <Text style={styles.tagTitleText}>今日の服を決める</Text>
+                            <View style={styles.tagTime}>
+                                <Text style={styles.tagTimeText}>12</Text>
+                                <Text style={styles.tagMinText}> min</Text>
+                            </View>
+                        </View>
+                        
+                        <View style={styles.triangle}>
+                            <Entypo name="triangle-down" size={28} color="#ec1a66" />
+                        </View>
+                    </View>
+                    <View style={styles.tagItemArea}>
+                        <View style={styles.tagItem}>
+                            <Text style={styles.tagTitleText}>今日の服を決める</Text>
+                            <View style={styles.tagTime}>
+                                <Text style={styles.tagTimeText}>12</Text>
+                                <Text style={styles.tagMinText}> min</Text>
+                            </View>
+                        </View>
+                        
+                        <View style={styles.triangle}>
+                            <Entypo name="triangle-down" size={28} color="#ec1a66" />
+                        </View>
+                    </View>
+                    <View style={styles.tagItemArea}>
+                        <View style={styles.tagItem}>
+                            <Text style={styles.tagTitleText}>今日の服を決める</Text>
+                            <View style={styles.tagTime}>
+                                <Text style={styles.tagTimeText}>12</Text>
+                                <Text style={styles.tagMinText}> min</Text>
+                            </View>
+                        </View>
+                        
+                        <View style={styles.triangle}>
+                            <Entypo name="triangle-down" size={28} color="#ec1a66" />
+                        </View>
+                    </View>
+                    <View style={styles.tagItemArea}>
+                        <View style={styles.tagItem}>
+                            <Text style={styles.tagTitleText}>今日の服を決める</Text>
+                            <View style={styles.tagTime}>
+                                <Text style={styles.tagTimeText}>12</Text>
+                                <Text style={styles.tagMinText}> min</Text>
+                            </View>
+                        </View>
+                        
+                        <View style={styles.triangle}>
+                            <Entypo name="triangle-down" size={28} color="#ec1a66" />
+                        </View>
+                    </View>
+                    <View style={styles.tagItemArea}>
+                        <View style={styles.tagItem}>
+                            <Text style={styles.tagTitleText}>今日の服を決める</Text>
+                            <View style={styles.tagTime}>
+                                <Text style={styles.tagTimeText}>12</Text>
+                                <Text style={styles.tagMinText}> min</Text>
+                            </View>
+                        </View>
+                        
+                        <View style={styles.triangle}>
+                            <Entypo name="triangle-down" size={28} color="#ec1a66" />
+                        </View>
+                    </View>
+                    <View style={styles.tagItemArea}>
+                        <View style={styles.tagItem}>
+                            <Text style={styles.tagTitleText}>今日の服を決める</Text>
+                            <View style={styles.tagTime}>
+                                <Text style={styles.tagTimeText}>12</Text>
+                                <Text style={styles.tagMinText}> min</Text>
+                            </View>
+                        </View>
+                        
+                        <View style={styles.triangle}>
+                            <Entypo name="triangle-down" size={28} color="#ec1a66" />
+                        </View>
                     </View>
                 </View>
             </View>
+                
+
             <View style={styles.rightContainer}>
                 <View style={styles.selected}>
                     <Text style={styles.selectedText}>選択中のタグ</Text>
@@ -92,6 +175,99 @@ const styles = StyleSheet.create({
         alignItems:"center",
         flexDirection: "column"
     },
+    tagHeader: {
+        width:175,
+        height:105,
+        alignItems:"center",
+    },
+    tagThemePlace: {
+        width:160,
+        height: 70,
+        borderWidth: 2,
+        borderColor: "#ffffff",
+        borderRadius: 20,
+        position: "absolute",
+        top:15,
+        alignItems:"center",
+        flexDirection: "column"
+    },
+    tagThemeText: {
+        color: "#ffffff",
+        fontSize:17,
+        fontWeight:"bold",
+        position: "absolute",
+        top:8
+    },
+    tagTimeAll: {
+        width: 140,
+        height: 32,
+        position: "absolute",
+        bottom:5,
+        flexDirection: "row",
+        alignItems:"center",
+        justifyContent: "center"
+    },
+    tagTimeAllNumber: {
+        color: "#ffffff",
+        fontSize: 17,
+        fontWeight: "bold"
+    },
+    tagTimeAllmin: {
+        color: "#ffffff",
+        fontSize: 17,
+        fontWeight: "bold"
+    },
+    tagArea: {
+        width:170,
+        height:50,
+        alignItems: "center",
+        flexDirection: "column"
+    },
+    tagItemArea: {
+        width:170,
+        height:80,
+        alignItems: "center"
+    },
+    tagItem:{
+        alignItems: "center",
+        flexDirection: "column",
+        backgroundColor: "rgba(255,255,255,0.6)",
+        width:160,
+        height:55,
+        borderWidth:2,
+        borderColor: "#ec1a66",
+        borderRadius: 20,
+    },
+    tagTitleText: {
+        color: "#ec1a66",
+        fontSize: 13,
+        fontWeight: "bold",
+        position: "absolute",
+        top:8,
+    },
+    tagTime: {
+        width:120,
+        height:22,
+        position:"absolute",
+        bottom:4,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    tagTimeText: {
+        color: "#ec1a66",
+        fontSize: 14.5,
+        fontWeight: "bold"
+    },
+    tagMinText: {
+        color: "#ec1a66",
+        fontSize: 14.5,
+        fontWeight: "bold"
+    },
+    triangle: {
+        position: "absolute",
+        bottom:-1.5
+    },
     rightContainer: {
         width:180,
         height:700,
@@ -114,10 +290,11 @@ const styles = StyleSheet.create({
     selectedText: {
         color: "#ffffff",
         position: "absolute",
-        top:20
+        top:20,
+        fontWeight:"bold"
     },
     selectedTag: {
-        backgroundColor: "#ffffff",
+        backgroundColor: "rgba(255,255,255,0.75)",
         width:150,
         height:55,
         borderRadius:20,
@@ -142,7 +319,8 @@ const styles = StyleSheet.create({
     },
     pastText: {
         color: "#ffffff",
-        marginTop: 8
+        marginTop: 8,
+        fontWeight:"bold"
     },
     pastTagArea: {
         width: 165,
