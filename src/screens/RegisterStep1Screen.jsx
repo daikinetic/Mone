@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   View, Text, TextInput, StyleSheet, Alert
 } from 'react-native';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 
 import Button from '../components/Button';
 
@@ -10,17 +10,17 @@ export default function RegisterStep1Screen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // function handlePress() {
-  //   firebase.auth().createUserWithEmailAndPassword(email, password)
-  //     .then((userCredential) => {
-  //       const { user } = userCredential;
-  //       console.log(user.uid);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.code, error.message);
-  //       Alert.alert(error.code);
-  //     });
-  // }
+  function handlePress() {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const { user } = userCredential;
+        console.log(user.uid);
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+        Alert.alert(error.code);
+      });
+  }
 
   return (
     <View style={styles.container}>
@@ -47,7 +47,7 @@ export default function RegisterStep1Screen() {
         />
         <Button
           label="NEXT"
-          // onPress={handlePress}
+          onPress={handlePress}
         />
       </View>
     </View>
