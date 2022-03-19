@@ -10,7 +10,7 @@ import TaskMainScreen from "./src/screens/TaskMainScreen";
 export default function App () {
     return (
         <View style={styles.container}>
-            <TagMainScreen />
+            <TagEditScreen />
         </View>
     );
 }
