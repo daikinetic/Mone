@@ -22,10 +22,9 @@ export default function DefaultTag() {
 const styles = StyleSheet.create({
     tagItem: {
         flexDirection: "row",
-        height: 60,
-        marginRight: 20,
+        height: "8.7%",
+        marginRight: "5.5%",
         marginBottom: 25,
-        paddingVertical: 8,
         paddingLeft: 10,
         paddingRight: 15,
         borderWidth: 2.3,
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
         justifyContent:"center"
     },
     tagTitle: {
-        width: 250,
+        width: "78%",
         alignItems: "center"
     },
     tagTitleText: {
@@ -45,27 +44,27 @@ const styles = StyleSheet.create({
         fontSize: 17,
     },
     tagTimes: {
-        width:50,
-        height: 50,
+        width:"15.5%",
+        height: "86%",
     },
     tagTime: {
-        width:30,
-        height: 28,
+        width:"73%",
+        height: "58%",
         alignItems:'center',
         marginBottom: 0,
     },
     tagTimeText: {
         color: "#EC1A66",
-        fontSize: 26,
+        fontSize: 24,
         fontWeight: "bold",
-        lineHeight: 34
+        lineHeight: 32
     },
     tagMin: {
         alignItems:"flex-end"
     },
     tagMinText: {
         color: "#ec1a66",
-        fontSize: 18,
+        fontSize: 17.5,
         fontWeight: "bold",
         lineHeight: 18
     },    
