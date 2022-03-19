@@ -4,6 +4,7 @@ import { View, StyleSheet, Text } from "react-native";
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
 
+import { AntDesign } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
 
@@ -16,7 +17,8 @@ export default function TagPastScreen() {
                         <Text style={styles.tagThemeText}>my first rutine</Text>
                     </View>
                     <View style={styles.tagTimeAll}>
-                        <Text style={styles.tagTimeAllText}>120 min</Text>
+                        <Text style={styles.tagTimeAllNumber}>120</Text>
+                        <Text style={styles.tagTimeAllmin}>min</Text>
                     </View>
                 </View>
                 <View style={styles.tagItem}>
@@ -34,6 +36,42 @@ export default function TagPastScreen() {
                 </View>
             </View>
             <View style={styles.rightContainer}>
+                <View style={styles.selected}>
+                    <Text style={styles.selectedText}>選択中のタグ</Text>
+                    <View style={styles.selectedTag}>
+                        <Text style={styles.selectedTagText}>今日の服を決める</Text>
+                    </View>
+                    <View style={styles.backIconPlace}>
+                        <View style={styles.backIcon}>
+                            <AntDesign name="back" size={28} color="#ec1a66" />
+                        </View>
+                    </View>
+                </View>
+                <Text style={styles.pastText}>過去のタグ</Text>
+                <View style={styles.pastTagArea}>
+                    <View style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </View>
+                    <View style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </View>
+                    <View style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </View>
+                    <View style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </View>
+                    <View style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </View>
+                    <View style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </View>
+                </View>
+            </View>
+            <View style={styles.tagFooter}></View>
+            <View style={styles.homeButton}>
+                <Entypo name="home" size={48} color="white" />
             </View>
         </View>
     );
@@ -44,104 +82,97 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#acb3bf',
     },
-    tagArea: {
-        margin: 1,
-        padding: 20,
-        height: 650,
-    },
-    tagItem: {
-        flexDirection: "row",
-        height: 60,
-        marginRight: 20,
-        marginBottom: 25,
-        paddingVertical: 8,
-        paddingLeft: 10,
-        paddingRight: 15,
-        borderWidth: 2.3,
-        borderRadius: 20,
-        borderColor: "#EC1A66",
-        backgroundColor: "#ffffff",
+    leftContainer: {
+        width:180,
+        height:700,
+        backgroundColor: "#acb3bf",
+        position: "absolute",
+        left: 0,
+        top: 0,
         alignItems:"center",
-        justifyContent:"center"
+        flexDirection: "column"
     },
-    tagTitle: {
-        width: 250,
-        alignItems: "center"
+    rightContainer: {
+        width:180,
+        height:700,
+        backgroundColor: "#EC1A66",
+        position: "absolute",
+        right: 0,
+        top: 0,
+        flexDirection: "column",
+        alignItems: "center",
+        borderTopLeftRadius: 20,
+        borderLeftWidth: 2,
+        borderLeftColor: "#ffffff"
     },
-    tagTitleText: {
+    selected: {
+        width:160,
+        height:180,
+        flexDirection: "column",
+        alignItems:"center"
+    },
+    selectedText: {
+        color: "#ffffff",
+        position: "absolute",
+        top:20
+    },
+    selectedTag: {
+        backgroundColor: "#ffffff",
+        width:150,
+        height:55,
+        borderRadius:20,
+        position: "absolute",
+        top:50,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    selectedTagText: {
         color: "#EC1A66",
-        fontWeight: "bold",
-        fontSize: 17,
+        fontWeight: "bold"
     },
-    tagTimes: {
-        width:50,
+    backIconPlace: {
+        backgroundColor: "#ffffff",
+        width: 50,
         height: 50,
+        borderRadius: 25,
+        position: "absolute",
+        top: 123,
+        alignItems: "center",
+        justifyContent: "center"
     },
-    tagTime: {
-        width:30,
-        height: 28,
-        alignItems:'center',
-        marginBottom: 0,
+    pastText: {
+        color: "#ffffff",
+        marginTop: 8
     },
-    tagTimeText: {
+    pastTagArea: {
+        width: 165,
+        height: 400,
+        alignItems: "center",
+        flexDirection: "column",
+    },
+    pastTagPlace: {
+        backgroundColor: "#ffffff",
+        width:150,
+        height:55,
+        borderRadius:20,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop:12
+    },
+    pastTagText: {
         color: "#EC1A66",
-        fontSize: 26,
-        fontWeight: "bold",
-        lineHeight: 34
-    },
-    tagMin: {
-        alignItems:"flex-end"
-    },
-    tagMinText: {
-        color: "#ec1a66",
-        fontSize: 18,
-        fontWeight: "bold",
-        lineHeight: 18
-    },    
-    tagBody: {
-        height: 565,
-        marginTop: 18,
+        fontWeight: "bold"
     },
     tagFooter: {
         height: 85,
-        backgroundColor: "#EC1A66",
-    },
-    whiteCircle: {
-        width: 75,
-        height: 75,
-        backgroundColor: "#ffffff",
-        borderRadius: 37.5,
-        elevation: 1.5,
+        width: 360,
         position: "absolute",
-        bottom: 40,
-        left: 157,
-        marginHorizontal: "auto"
-    },
-    redCircle: {
-        width: 65,
-        height: 65,
+        bottom: 0,
         backgroundColor: "#EC1A66",
-        borderRadius: 32.5,
-        elevation: 1.6,
-        position: "absolute",
-        bottom: 45,
-        left: 162,
-        marginHorizontal: "auto"
     },
     homeButton: {
         position: "absolute",
-        left:55,
+        left: 156,
         bottom: 17,
-    },
-    editButton: {
-        position: "absolute",
-        right:55,
-        bottom:15
-    },
-    rightTriangle: {
-        elevation:3,
-        position: "absolute",
-        left:158.5,
-        bottom:38
     },
 })
