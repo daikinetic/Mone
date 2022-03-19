@@ -5,7 +5,9 @@ import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
 
 import { Feather } from '@expo/vector-icons'; 
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+
 
 export default function TagMainScreen() {
     return (
@@ -27,7 +29,7 @@ export default function TagMainScreen() {
                     <Entypo name="home" size={48} color="white" />
                 </View>
                 <View style={styles.editButton}>
-                    <Feather name="plus" size={55} color="white" />
+                    <MaterialCommunityIcons name="pencil" size={48} color="#ffffff" />
                 </View>
             </View>
             <View style={styles.resumeButton}>
