@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ScrollView } from "react-native";
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     optionsContainer: {
         position: "absolute",
         right: 0,
-        top: "33%",
+        top: "33.5%",
         flexDirection: "column",
         elevation:3,
         width:"68%",
