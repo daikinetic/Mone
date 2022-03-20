@@ -23,7 +23,7 @@ const styles = StyleSheet.create ({
     tagHeader: {
         flexDirection: "row",
         justifyContent:"center",
-        height: "12.5%",
+        height: 70,
     },
     tagTheme: {
         borderWidth: 2,
