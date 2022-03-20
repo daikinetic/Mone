@@ -34,7 +34,8 @@ export default function DefaultTag() {
 
 const styles = StyleSheet.create({
     tagItemPlace:{
-        height: "12.7%",
+        height: 87,
+        width: "97.5%"
     },
     tagItem: {
         flexDirection: "row",

@@ -180,7 +180,8 @@ const styles = StyleSheet.create({
         left: 0,
         top: 0,
         alignItems:"center",
-        flexDirection: "column"
+        flexDirection: "column",
+        flex:1
     },
     tagHeader: {
         width:175,
@@ -228,7 +229,7 @@ const styles = StyleSheet.create({
         width:170,
         height:50,
         alignItems: "center",
-        flexDirection: "column"
+        flexDirection: "column",
     },
     tagItemArea: {
         width:170,

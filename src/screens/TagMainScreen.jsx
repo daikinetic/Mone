@@ -8,13 +8,12 @@ import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-
 export default function TagMainScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
                 <TagHeader />
-                <View style={styles.tagBody}>
+                <ScrollView style={styles.tagBody}>
                     <DefaultTag />
                     <DefaultTag />
                     <DefaultTag />
@@ -22,7 +21,12 @@ export default function TagMainScreen() {
                     <DefaultTag />
                     <DefaultTag />
                     <DefaultTag />
-                </View>
+                    <DefaultTag />
+                    <DefaultTag />
+                    <DefaultTag />
+                    <DefaultTag />
+                    <DefaultTag />
+                </ScrollView>
             </View>
             <View style={styles.tagFooter}>
                 <View style={styles.homeButton}>

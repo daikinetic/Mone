@@ -12,7 +12,7 @@ export default function TagMainScreen() {
         <View style={styles.container}>
             <View style={styles.tagArea}>
                 <TagHeader />
-                <View style={styles.tagBody}>
+                <ScrollView style={styles.tagBody}>
                     <DefaultTag />
                         {/*
                         <View style={styles.tagAdditionIcon}>
@@ -25,7 +25,13 @@ export default function TagMainScreen() {
                     <DefaultTag />
                     <DefaultTag />
                     <DefaultTag />
-                </View>
+                    <DefaultTag />
+                    <DefaultTag />
+                    <DefaultTag />
+                    <DefaultTag />
+                    <DefaultTag />
+                    <DefaultTag />
+                </ScrollView>
             </View>
             <View style={styles.tagFooter}>
                 <View style={styles.homeButton}>

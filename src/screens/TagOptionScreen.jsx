@@ -12,7 +12,7 @@ export default function TagOptionScreen() {
         <View style={styles.container}>
             <View style={styles.tagArea}>
                 <TagHeader />
-                <View style={styles.tagBody}>
+                <ScrollView style={styles.tagBody}>
                     <DefaultTag />
                     <DefaultTag />
                     <View style={styles.optionsContainer}>
@@ -52,7 +52,7 @@ export default function TagOptionScreen() {
                     <DefaultTag />
                     <DefaultTag />
                     <DefaultTag />
-                </View>
+                </ScrollView>
             </View>
             <View style={styles.tagFooter}>
                 <View style={styles.homeButton}>
