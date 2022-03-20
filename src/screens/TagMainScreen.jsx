@@ -8,7 +8,6 @@ import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-
 export default function TagMainScreen() {
     return (
         <View style={styles.container}>
