@@ -1,11 +1,16 @@
-import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import React, {useState} from "react";
+import { View, StyleSheet, Text, TextInput } from "react-native";
 
 export default function TagHeader() {
+    const [header, setHeader] = useState('');
     return (
         <View style={styles.tagHeader}>
             <View style={styles.tagTheme}>
-                <Text style={styles.themeText}>my first rutine</Text>
+                <TextInput
+                    style={styles.themeText}
+                    value={header}
+                    onChangeText={(text) => { setHeader(text); }}
+                />
             </View>
             <View style={styles.tagTimeAllContainer}>
                 <View style={styles.tagTimeAll}>

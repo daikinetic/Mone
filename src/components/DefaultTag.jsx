@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TextInput } from "react-native";
 import { borderBottomColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 import { Entypo } from '@expo/vector-icons'; 
@@ -10,11 +10,11 @@ export default function DefaultTag() {
         <View style={styles.tagItemPlace}>
             <View style={styles.tagItem}>
                 <View style={styles.tagTitle}>
-                    <Text style={styles.tagTitleText}>今日の服を決める</Text>
+                    <TextInput style={styles.tagTitleText}>今日の服を決める</TextInput>
                 </View>
                 <View style={styles.tagTimes}> 
                     <View style={styles.tagTime}>
-                        <Text style={styles.tagTimeText}>12</Text>
+                        <TextInput style={styles.tagTimeText}>12</TextInput>
                     </View>   
                     <View style={styles.tagMin}>   
                         <Text style={styles.tagMinText}>min</Text>
