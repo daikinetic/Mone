@@ -2,6 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity, ImageBackground,
 } from 'react-native';
+import Slider from '@react-native-community/slider';
+
+// import SliderComponent from '../components/SliderComponent';
 
 export default function TimerSampleScreen() {
   const [count, setCount] = useState(0);
@@ -11,7 +14,7 @@ export default function TimerSampleScreen() {
       return;
     }
     intervalRef.current = setInterval(() => {
-      setCount(c => c + 0.1);
+      setCount(c => c + 0.100);
     }, 100);
   };
   const stop = () => {
@@ -25,7 +28,7 @@ export default function TimerSampleScreen() {
     setCount(0);
   }
   // console.log(count);
-  if (count >= 20) {
+  if (count >= 100) {
     stop();
   }
 
@@ -39,22 +42,13 @@ export default function TimerSampleScreen() {
       </ImageBackground>
       <View style={styles.timer}>
         <Text>Count={count}</Text>
-        <TouchableOpacity
-          style={styles.startButton}
-          onPress={start}
-        >
+        <TouchableOpacity style={styles.startButton} onPress={start}>
           <Text>start</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.stopButton}
-          onPress={stop}
-        >
+        <TouchableOpacity style={styles.stopButton} onPress={stop}>
           <Text>stop</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.resetButton}
-          onPress={reset}
-        >
+        <TouchableOpacity style={styles.resetButton} onPress={reset}>
           <Text>reset</Text>
         </TouchableOpacity>
       </View>
@@ -62,6 +56,18 @@ export default function TimerSampleScreen() {
         <View style={styles.ball}></View>
         <View style={styles.bar(count)}></View>
       </View>
+      {/* <View style={styles.sliderContainer}> */}
+      <Slider
+        style={styles.slider}
+        minimumValue={0}
+        maximumValue={100}
+        minimunTrackTintColor="#EC1A66"
+        maximumTrackTintColor="#EC1A66"
+        thumbTintColor='#EC1A66'
+        value={count}
+        onValueChange={(value) => {setCount(value);}}
+      />
+    {/* </View> */}
     </View>
   );
 }
@@ -69,17 +75,18 @@ export default function TimerSampleScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'green',
+    // backgroundColor: 'green',
   },
   topMargin: {
     backgroundColor: '#ffffff',
-    height: '10%',
+    height: 70,
     zIndex: 10,
   },
   midMargin: (count) => ({
     backgroundColor: '#ffffff',
     zIndex: 10,
-    height: `${80*(1-count*0.01)-2}%`,
+    height: 500*(1-count*0.01),
+    // height: `${80*(1-count*0.01)-2}%`,
   }),
   image: {
     position: 'absolute',
@@ -109,9 +116,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#EC1A66',
     position: 'absolute',
     zIndex: 15,
-    left: 30,
+    left: '10%',
     top: '10%',
-    height: '80%',
+    height: 500,
     width: 5,
     borderRadius: 5,
     justifyContent: 'flex-end',
@@ -131,4 +138,28 @@ const styles = StyleSheet.create({
     // height: '30%',
     width: '100%',
   }),
+  sliderContainer: {
+    zIndex: 15,
+    backgroundColor: 'blue',
+    transform:[{rotate: "-90deg"}],
+    position: 'absolute',
+    // width: '80%',
+    height: '20%',
+    width: '100%',
+    top: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  slider: {
+    transform:[{rotate: "-90deg"}],
+    // backgroundColor: 'pink',
+    position: 'absolute',
+    zIndex: 15,
+    top: 300,
+    left: '5%',
+    width: 530,
+    height: 40,
+    // height: '100%',
+    // width: '100%',
+  },
 });

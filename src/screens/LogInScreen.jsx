@@ -5,9 +5,17 @@ import {
 
 import Button from '../components/Button';
 
-export default function LogInScreen() {
+export default function LogInScreen(props) {
+  const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  function handlePress() {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'HomeScreen' }],
+    });
+  }
 
   return (
     <View style={styles.container}>
@@ -32,7 +40,10 @@ export default function LogInScreen() {
           secureTextEntry
           textContentType="password"
         />
-        <Button label="LOG IN" />
+        <Button
+          label="LOG IN"
+          onPress={handlePress}
+        />
       </View>
     </View>
   );

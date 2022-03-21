@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
@@ -8,7 +8,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import AppBar from '../components/AppBar';
 import ButtonWithLogo from '../components/ButtonWithLogo';
 
-export default function SettingScreen() {
+export default function SettingScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
       <AppBar name="gear" />
@@ -17,28 +18,30 @@ export default function SettingScreen() {
         <Text style={styles.mone}>mone</Text>
       </View>
       <View style={styles.button12}>
-        <View style={styles.button1}>
+        <TouchableOpacity style={styles.button1} onPress={() => { navigation.navigate('SettingTimeScreen'); }}>
           <Ionicons style={styles.time} name="timer-outline" size={50} color="white" />
           <Text style={styles.button1Text}>Time Alert</Text>
-        </View>
-        <View style={styles.button2}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button2}>
           <Foundation style={styles.paint} name="paint-bucket" size={50} color="#EC1A66" />
           <Text style={styles.button2Text}>Colors</Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.button34}>
-        <View style={styles.button3}>
+        <TouchableOpacity style={styles.button3}>
           <AntDesign style={styles.lock} name="unlock" size={50} color="#EC1A66" />
           <Text style={styles.button3Text}>Privacy</Text>
-        </View>
-        <View style={styles.button4}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button4}>
           <FontAwesome style={styles.photo} name="photo" size={50} color="white" />
           <Text style={styles.button4Text}>Background</Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.footer}>
-        <FontAwesome style={styles.footerLogo} name="home" size={50} color="#EC1A66" />
-        <Text style={styles.footerText}>Back</Text>
+        <TouchableOpacity onPress={() => { navigation.goBack(); }}>
+            <FontAwesome style={styles.footerLogo} name="home" size={50} color="#EC1A66" />
+            <Text style={styles.footerText}>Back</Text>
+        </TouchableOpacity>
         <View style={styles.footLineContainer}>
           <View style={styles.footLine}></View>
         </View>

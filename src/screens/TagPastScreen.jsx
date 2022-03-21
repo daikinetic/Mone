@@ -3,12 +3,15 @@ import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-nati
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
+import HomeButton from "../components/HomeButton";
+import BackFromPastButton from "../components/BackFromPastButton";
 
 import { AntDesign } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
 
-export default function TagPastScreen() {
+export default function TagPastScreen(props) {
+    const { onPress, style, navigation } = props;
     return (
         <View style={styles.container}>
             <View style={styles.leftContainer}>
@@ -124,11 +127,9 @@ export default function TagPastScreen() {
                     <View style={styles.selectedTag}>
                         <Text style={styles.selectedTagText}>今日の服を決める</Text>
                     </View>
-                    <TouchableOpacity style={styles.backIconPlace}>
-                        <View style={styles.backIcon}>
-                            <AntDesign name="back" size={28} color="#ec1a66" />
-                        </View>
-                    </TouchableOpacity>
+                    <BackFromPastButton
+                        onPress = { () => { navigation.navigate("TagEditScreen"); }}
+                    />
                 </View>
                 <Text style={styles.pastText}>過去のタグ</Text>
                 <ScrollView
@@ -167,9 +168,10 @@ export default function TagPastScreen() {
                 </ScrollView>
             </View>
             <View style={styles.tagFooter}>
-                <TouchableOpacity style={styles.homeButton}>
-                    <Entypo name="home" size={48} color="white" />
-                </TouchableOpacity>
+                <HomeButton
+                    style={{ position:null, left:null }}
+                    onPress={() => { navigation.navigate("HomeScreen")} }
+                />
             </View>
         </View>
     );
