@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-nati
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
+import HomeButton from "../components/HomeButton";
 
 import { AntDesign } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons'; 
@@ -167,9 +168,9 @@ export default function TagPastScreen() {
                 </ScrollView>
             </View>
             <View style={styles.tagFooter}>
-                <TouchableOpacity style={styles.homeButton}>
-                    <Entypo name="home" size={48} color="white" />
-                </TouchableOpacity>
+                <HomeButton
+                    style={{ position:null, left:null }}
+                />
             </View>
         </View>
     );
