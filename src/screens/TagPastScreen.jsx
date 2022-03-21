@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-native";
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
@@ -124,44 +124,52 @@ export default function TagPastScreen() {
                     <View style={styles.selectedTag}>
                         <Text style={styles.selectedTagText}>今日の服を決める</Text>
                     </View>
-                    <View style={styles.backIconPlace}>
+                    <TouchableOpacity style={styles.backIconPlace}>
                         <View style={styles.backIcon}>
                             <AntDesign name="back" size={28} color="#ec1a66" />
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 </View>
                 <Text style={styles.pastText}>過去のタグ</Text>
-                <View style={styles.pastTagArea}>
-                    <View style={styles.pastTagPlace}>
+                <ScrollView
+                    contentContainerStyle={styles.pastTagArea}
+                >
+                    <TouchableOpacity style={styles.pastTagPlace}>
                         <Text style={styles.pastTagText}>今日の服を決める</Text>
-                    </View>
-                    <View style={styles.pastTagPlace}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pastTagPlace}>
                         <Text style={styles.pastTagText}>今日の服を決める</Text>
-                    </View>
-                    <View style={styles.pastTagPlace}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pastTagPlace}>
                         <Text style={styles.pastTagText}>今日の服を決める</Text>
-                    </View>
-                    <View style={styles.pastTagPlace}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pastTagPlace}>
                         <Text style={styles.pastTagText}>今日の服を決める</Text>
-                    </View>
-                    <View style={styles.pastTagPlace}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pastTagPlace}>
                         <Text style={styles.pastTagText}>今日の服を決める</Text>
-                    </View>
-                    <View style={styles.pastTagPlace}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pastTagPlace}>
                         <Text style={styles.pastTagText}>今日の服を決める</Text>
-                    </View>
-                    <View style={styles.pastTagPlace}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pastTagPlace}>
                         <Text style={styles.pastTagText}>今日の服を決める</Text>
-                    </View>
-                    <View style={styles.pastTagPlace}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pastTagPlace}>
                         <Text style={styles.pastTagText}>今日の服を決める</Text>
-                    </View>
-                </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pastTagPlace}>
+                        <Text style={styles.pastTagText}>今日の服を決める</Text>
+                    </TouchableOpacity>
+                </ScrollView>
             </View>
             <View style={styles.tagFooter}>
-                <View style={styles.homeButton}>
+                <TouchableOpacity style={styles.homeButton}>
                     <Entypo name="home" size={48} color="white" />
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -277,6 +285,7 @@ const styles = StyleSheet.create({
         bottom:-1.5
     },
     rightContainer: {
+        flex:1,
         width:"50%",
         height:700,
         backgroundColor: "#EC1A66",

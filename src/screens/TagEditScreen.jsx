@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-native";
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
@@ -34,14 +34,14 @@ export default function TagMainScreen() {
                 </ScrollView>
             </View>
             <View style={styles.tagFooter}>
-                <View style={styles.homeButton}>
+                <TouchableOpacity style={styles.homeButton}>
                     <Entypo name="home" size={48} color="white" />
-                </View>
-                <View style={styles.editButton}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.editButton}>
                     <Feather name="check" size={55} color="white" />
-                </View>
+                </TouchableOpacity>
             </View>
-            <View style={styles.resumeButton}>
+            <TouchableOpacity style={styles.resumeButton}>
                 <View style={styles.whiteCircle}>
 
                 </View>
@@ -53,7 +53,7 @@ export default function TagMainScreen() {
                     <Entypo name="triangle-right" size={75} color="white" />
                 </View>
                 
-            </View>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -89,9 +89,9 @@ const styles = StyleSheet.create({
     },
     resumeButton: {
         width:"100%",
-        height: "20%",
+        height: "10%",
         position: "absolute",
-        bottom: "1%",
+        bottom: "8%",
         justifyContent:"center",
         alignItems: "center"
     },
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         borderRadius: 37.5,
         elevation: 1.5,
         position: "absolute",
-        bottom: 40,
+        bottom: 0,
         marginHorizontal: "auto"
     },
     redCircle: {
@@ -112,12 +112,12 @@ const styles = StyleSheet.create({
         borderRadius: 32.5,
         elevation: 1.6,
         position: "absolute",
-        bottom: 45,
+        bottom: 5,
         marginHorizontal: "auto"
     },
     rightTriangle: {
         elevation:3,
         position: "absolute",
-        bottom:38
+        bottom:-3
     },
 })
