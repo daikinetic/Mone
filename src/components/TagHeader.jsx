@@ -10,7 +10,7 @@ export default function TagHeader() {
                     style={styles.themeText}
                     value={header}
                     onChangeText={(text) => { setHeader(text); }}
-                    placeholder="▶ Rutine Name"
+                    placeholder="▶ Routine Name"
                 />
             </View>
             <View style={styles.tagTimeAllContainer}>

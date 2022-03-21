@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-nati
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
+import HomeButton from "../components/HomeButton";
 
 import { Feather } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
@@ -34,9 +35,7 @@ export default function TagMainScreen() {
                 </ScrollView>
             </View>
             <View style={styles.tagFooter}>
-                <TouchableOpacity style={styles.homeButton}>
-                    <Entypo name="home" size={48} color="white" />
-                </TouchableOpacity>
+                <HomeButton />
                 <TouchableOpacity style={styles.editButton}>
                     <Feather name="check" size={55} color="white" />
                 </TouchableOpacity>
