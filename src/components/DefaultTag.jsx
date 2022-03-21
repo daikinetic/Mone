@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
 import { borderBottomColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
@@ -6,15 +6,27 @@ import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 
 export default function DefaultTag() {
+    const [title, setTitle] = useState('');
+    const [time, setTime] = useState('');
     return (
         <View style={styles.tagItemPlace}>
             <View style={styles.tagItem}>
                 <View style={styles.tagTitle}>
-                    <TextInput style={styles.tagTitleText}>今日の服を決める</TextInput>
+                    <TextInput 
+                        style={styles.tagTitleText}
+                        value={title}
+                        onChangeText={(text) => { setTitle(text); }}
+                        placeholder="▶ Tag Title "
+                     />
                 </View>
                 <View style={styles.tagTimes}> 
                     <View style={styles.tagTime}>
-                        <TextInput style={styles.tagTimeText}>12</TextInput>
+                        <TextInput 
+                            style={styles.tagTimeText}
+                            value={time}
+                            onChangeText={(text) => { setTime(text); }}
+                            placeholder="xx"
+                        />
                     </View>   
                     <View style={styles.tagMin}>   
                         <Text style={styles.tagMinText}>min</Text>
