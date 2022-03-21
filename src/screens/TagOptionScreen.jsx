@@ -6,8 +6,10 @@ import TagHeader from "../components/TagHeader";
 
 import { Feather } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
+import HomeButton from "../components/HomeButton";
 
-export default function TagOptionScreen() {
+export default function TagOptionScreen(props) {
+    const { onPress, style, navigation } = props;
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
@@ -55,24 +57,16 @@ export default function TagOptionScreen() {
                 </ScrollView>
             </View>
             <View style={styles.tagFooter}>
-                <TouchableOpacity style={styles.homeButton}>
-                    <Entypo name="home" size={48} color="white" />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.editButton}>
-                    <Feather name="check" size={55} color="white" />
-                </TouchableOpacity>
+                <HomeButton
+                    onPress={() => { navigation.navigate("HomeScreen");} }
+                />
+                <CheckButton
+                    onPress={ () => { navigation.navigate("TagMainScreen");} }
+                />
             </View>
-            <TouchableOpacity style={styles.resumeButton}>
-                <View style={styles.whiteCircle}>
-
-                </View>
-                <View style={styles.redCircle}>
-
-                </View>
-                <View style={styles.rightTriangle}>
-                    <Entypo name="triangle-right" size={75} color="white" />
-                </View>
-            </TouchableOpacity>
+            <ResumeButton
+                onPress= { () => { navigation.navigate("TimerSampleScreen"); }} 
+            />
         </View>
     );
 }

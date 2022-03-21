@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
@@ -7,7 +7,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import AppBar from '../components/AppBar';
 // import ButtonWithLogo from '../components/ButtonWithLogo';
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
       <AppBar name="home" />
@@ -16,27 +17,37 @@ export default function HomeScreen() {
         <Text style={styles.goodMorning}>おはようございます</Text>
       </View>
       <View style={styles.button12}>
-        <View style={styles.button1}>
+        <TouchableOpacity style={styles.button1}>
           <AntDesign style={styles.play} name="playcircleo" size={50} color="white" />
           <Text style={styles.button1Text}>Quick Start Preset Project</Text>
-        </View>
-        <View style={styles.button2}>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button2}
+          onPress={() => {
+            navigation.navigate('TagMainScreen');
+          }}
+        >
           <Entypo style={styles.plus} name="plus" size={50} color="#EC1A66" />
           <Text style={styles.button2Text}>New Project</Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.button34}>
-        <View style={styles.button3}>
+        <TouchableOpacity style={styles.button3}>
           <View style={styles.button3Icon}>
             <FontAwesome style={styles.chart} name="bar-chart" size={40} color="#EC1A66" />
             <AntDesign style={styles.share} name="sharealt" size={40} color="#EC1A66" />
           </View>
           <Text style={styles.button3Text}>Logs / Share</Text>
-        </View>
-        <View style={styles.button4}>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button4}
+          onPress={() => {
+            navigation.navigate('SettingScreen');
+          }}
+        >
           <FontAwesome style={styles.gear} name="gear" size={50} color="white" />
           <Text style={styles.button4Text}>Settings</Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.footer}>
         <View style={styles.footerLogo}>

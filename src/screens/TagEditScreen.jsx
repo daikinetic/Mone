@@ -3,11 +3,15 @@ import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-nati
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
+import HomeButton from "../components/HomeButton";
+import CheckButton from "../components/CheckButton";
+import ResumeButton from "../components/ResumeButton";
 
 import { Feather } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
 
-export default function TagMainScreen() {
+export default function TagEditScreen(props) {
+    const { style, onPress, navigation } = props;
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
@@ -34,26 +38,16 @@ export default function TagMainScreen() {
                 </ScrollView>
             </View>
             <View style={styles.tagFooter}>
-                <TouchableOpacity style={styles.homeButton}>
-                    <Entypo name="home" size={48} color="white" />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.editButton}>
-                    <Feather name="check" size={55} color="white" />
-                </TouchableOpacity>
+                <HomeButton
+                    onPress={() => { navigation.navigate("HomeScreen");} }
+                />
+                <CheckButton
+                    onPress={ () => { navigation.navigate("TagMainScreen");} }
+                />
             </View>
-            <TouchableOpacity style={styles.resumeButton}>
-                <View style={styles.whiteCircle}>
-
-                </View>
-                <View style={styles.redCircle}>
-                   
-                </View>
-                
-                <View style={styles.rightTriangle}>
-                    <Entypo name="triangle-right" size={75} color="white" />
-                </View>
-                
-            </TouchableOpacity>
+            <ResumeButton
+                onPress= { () => { navigation.navigate("TimerSampleScreen"); }} 
+            />
         </View>
     );
 }
@@ -82,7 +76,7 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         left:"15%",
     },
-    editButton: {
+    checkButton: {
         position: "absolute",
         justifyContent:"center",
         right:"15%",

@@ -6,7 +6,8 @@ import firebase from 'firebase';
 
 import Button from '../components/Button';
 
-export default function RegisterStep1Screen() {
+export default function RegisterStep1Screen(props) {
+  const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,6 +16,10 @@ export default function RegisterStep1Screen() {
       .then((userCredential) => {
         const { user } = userCredential;
         console.log(user.uid);
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'RegisterStep2Screen' }],
+        });
       })
       .catch((error) => {
         console.log(error.code, error.message);

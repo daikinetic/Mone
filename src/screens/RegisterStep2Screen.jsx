@@ -5,8 +5,16 @@ import {
 
 import Button from '../components/Button';
 
-export default function RegisterStep2Screen() {
+export default function RegisterStep2Screen(props) {
+  const { navigation } = props;
   const [username, setUsername] = useState('');
+
+  function handlePress() {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'HomeScreen' }],
+    });
+  }
 
   return (
     <View style={styles.container}>
@@ -22,6 +30,7 @@ export default function RegisterStep2Screen() {
         />
         <Button
           label="SIGN UP"
+          onPress={handlePress}
         />
         <Text style={styles.footer}>By signing up, you agree to Photo's Terms of Service and Privacy Policy.</Text>
       </View>
