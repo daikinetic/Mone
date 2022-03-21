@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
 import firebase from 'firebase';
 
 import TagMainScreen from "./src/screens/TagMainScreen";
@@ -39,6 +39,21 @@ export default function App () {
         <NavigationContainer>
             <Stack.Navigator
                 initialRouteName="HomeScreen"
+                screenOptions={{
+                    headerStyle: {
+                        backgroundColor: "#e98099",
+                    },
+                    headerTitleStyle: {
+                        color: "#ffffff",
+                        fontSize: 24,
+                        textAlign: "center",
+                    },
+                    headerTitle: "Mone",
+                    headerTintColor: "#ffffff",
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                    gestureEnabled: true,
+                    gestureDirection: 'horizontal'
+                }}
             >
                 <Stack.Screen name="TagMainScreen" component={TagMainScreen} />
                 <Stack.Screen name="TagEditScreen" component={TagEditScreen} />
