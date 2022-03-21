@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, TextInput } from "react-native";
+import { View, StyleSheet, Text, TextInput,TouchableOpacity } from "react-native";
 import { borderBottomColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+import { string, shape, func } from "prop-types";
 
 import { Entypo } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons'; 
 
-export default function DefaultTag() {
+export default function DefaultTag(props) {
+    const { onPress } = props;
     const [title, setTitle] = useState('');
     const [time, setTime] = useState('');
     return (
@@ -36,13 +38,24 @@ export default function DefaultTag() {
             <View style={styles.triangle}>
                 <Entypo name="triangle-down" size={28} color="#EC1A66" />
             </View>
-            <View style={styles.plusBotton}>
+            <TouchableOpacity
+                style={styles.plusBotton}
+                onPress={onPress}
+            >
                 <Feather name="plus" size={42} color="white" />
-            </View>
+            </TouchableOpacity>
         </View>
         
     );
 }
+
+DefaultTag.propTypes = {
+    onPress: func,
+};
+
+DefaultTag.defaultProps = {
+    onPress: null,
+};
 
 const styles = StyleSheet.create({
     tagItemPlace:{
