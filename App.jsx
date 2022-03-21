@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import firebase from 'firebase';
 
 import TagMainScreen from "./src/screens/TagMainScreen";
 import TagEditScreen from "./src/screens/TagEditScreen";
@@ -18,6 +19,18 @@ import HomeScreen from "./src/screens/HomeScreen";
 import StartScreen from "./src/screens/StartScreen";
 import TimerSampleScreen from "./src/screens/TimerSampleScreen"; 
 
+const firebaseConfig = {
+    apiKey: "AIzaSyA7dk0v-m25r9tX8AYQL9PxJik7LNtaJao",
+    authDomain: "mone-6e841.firebaseapp.com",
+    projectId: "mone-6e841",
+    storageBucket: "mone-6e841.appspot.com",
+    messagingSenderId: "742955431893",
+    appId: "1:742955431893:web:ea6f4a4d8010632a292f5c"
+};
+
+if (firebase.apps.length === 0) {
+    firebase.initializeApp(firebaseConfig);
+}
 
 const Stack = createStackNavigator();
 
@@ -25,7 +38,7 @@ export default function App () {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="TagMainScreen"
+                initialRouteName="HomeScreen"
             >
                 <Stack.Screen name="TagMainScreen" component={TagMainScreen} />
                 <Stack.Screen name="TagEditScreen" component={TagEditScreen} />

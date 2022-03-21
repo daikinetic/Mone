@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Switch } from 'react-native';
+import { View, Text, StyleSheet, Switch, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
 import AppBar from '../components/AppBar';
 
-export default function SettingTimeScreen() {
+export default function SettingTimeScreen(props) {
+  const { navigation } = props;
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -30,8 +31,10 @@ export default function SettingTimeScreen() {
         </View>
       </View>
       <View style={styles.footer}>
-        <FontAwesome style={styles.footerLogo} name="gear" size={50} color="#EC1A66" />
-        <Text style={styles.footerText}>Back</Text>
+        <TouchableOpacity onPress={() => { navigation.goBack(); }}>
+          <FontAwesome style={styles.footerLogo} name="gear" size={50} color="#EC1A66" />
+          <Text style={styles.footerText}>Back</Text>
+        </TouchableOpacity>
         <View style={styles.footLineContainer}>
           <View style={styles.footLine}></View>
         </View>

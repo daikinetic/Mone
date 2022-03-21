@@ -1,29 +1,30 @@
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-native";
 
-import DefaultTag from "../components/DefaultTag";
-import TagHeader from "../components/TagHeader";
+import DefaultTag from "./DefaultTag";
+import TagHeader from "./TagHeader";
+import HomeButton from "./HomeButton";
 
 import { Feather } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-export default function HomeButton (props) {
-    const { style, onPress } = props;
+export default function CheckButton (props) {
+    const { style, onPress, navigation } = props;
     return (
-        <TouchableOpacity 
-            style={[ styles.homeButton, style ]}
+        <TouchableOpacity
+            style={styles.checkButton}
             onPress={ onPress }
         >
-            <Entypo name="home" size={48} color="white" />
+            <Feather name="check" size={55} color="white" />
         </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
-    homeButton: {
+    checkButton: {
         position: "absolute",
         justifyContent:"center",
-        left:"15%",
+        right:"15%",
     },
 })

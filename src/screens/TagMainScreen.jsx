@@ -4,13 +4,15 @@ import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-nati
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
 import HomeButton from "../components/HomeButton";
+import EditButton from "../components/EditButton";
+import ResumeButton from "../components/ResumeButton";
 
 import { Feather } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default function TagMainScreen(props) {
-    const { style, onPress } = props;
+    const { style, onPress, navigation } = props;
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
@@ -31,25 +33,16 @@ export default function TagMainScreen(props) {
                 </ScrollView>
             </View>
             <View style={styles.tagFooter}>
-                <HomeButton />
-                <TouchableOpacity style={styles.editButton}>
-                    <MaterialCommunityIcons name="pencil" size={48} color="#ffffff" />
-                </TouchableOpacity>
+                <HomeButton
+                    onPress={() => { navigation.navigate("HomeScreen");} }
+                />
+                <EditButton 
+                    onPress={() => { navigation.navigate("TagEditScreen"); }} 
+                />
             </View>
-            <TouchableOpacity
-                style={styles.resumeButton}
-                onPress = { onPress }
-            >
-                <View style={styles.whiteCircle}>
-
-                </View>
-                <View style={styles.redCircle}>
-
-                </View>
-                <View style={styles.rightTriangle}>
-                    <Entypo name="triangle-right" size={74.5} color="white" />
-                </View>
-            </TouchableOpacity>
+            <ResumeButton
+                onPress= { () => { navigation.navigate("TimerSampleScreen"); }} 
+            />
         </View>
     );
 }

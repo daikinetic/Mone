@@ -5,7 +5,8 @@ import {
 
 import Button from '../components/Button';
 
-export default function LoggedOutScreen() {
+export default function LoggedOutScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
@@ -13,10 +14,20 @@ export default function LoggedOutScreen() {
         <Text style={styles.logoText}>mone</Text>
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.leftButton}>
+        <TouchableOpacity 
+          style={styles.leftButton}
+          onPress={() => {
+            navigation.navigate('LogInScreen');
+          }}
+        >
           <Text style={styles.login}>LOG IN</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.rightButton}>
+        <TouchableOpacity
+          style={styles.rightButton}
+          onPress={() => {
+            navigation.navigate('RegisterStep1Screen');
+          }}
+        >
           <Text style={styles.register}>REGISTER</Text>
         </TouchableOpacity>
       </View>
