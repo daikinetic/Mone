@@ -28,6 +28,8 @@ const firebaseConfig = {
     appId: "1:742955431893:web:ea6f4a4d8010632a292f5c"
 };
 
+require('firebase/firestore');
+
 if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
 }
@@ -38,7 +40,7 @@ export default function App () {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="TimerSampleScreen"
+                initialRouteName="LogInScreen"
                 screenOptions={{
                     headerStyle: {
                         backgroundColor: "#e98099",
@@ -51,8 +53,6 @@ export default function App () {
                     headerTitle: "Mone",
                     headerTintColor: "#ffffff",
                     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-                    gestureEnabled: true,
-                    gestureDirection: 'horizontal'
                 }}
             >
                 <Stack.Screen name="TagMainScreen" component={TagMainScreen} />
@@ -67,7 +67,11 @@ export default function App () {
                 <Stack.Screen name="SettingTimeScreen" component={SettingTimeScreen} />
                 <Stack.Screen name="HomeScreen" component={HomeScreen} />
                 <Stack.Screen name="StartScreen" component={StartScreen} />
-                <Stack.Screen name="TimerSampleScreen" component={TimerSampleScreen} />
+                <Stack.Screen
+                    name="TimerSampleScreen"
+                    component={TimerSampleScreen}
+                    options={{ headerShown: false }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );
