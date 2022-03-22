@@ -19,7 +19,9 @@ import SettingScreen from "./src/screens/SettingScreen";
 import SettingTimeScreen from "./src/screens/SettingTimeScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import StartScreen from "./src/screens/StartScreen";
-import TimerSampleScreen from "./src/screens/TimerSampleScreen";
+import TimerSampleScreen from "./src/screens/TimerSampleScreen"; 
+import TagEditSubScreen from "./src/screens/TagEditSubScreen";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyA7dk0v-m25r9tX8AYQL9PxJik7LNtaJao",
@@ -42,7 +44,7 @@ export default function App () {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="TimerSampleScreen"
+                initialRouteName="TagMainScreen"
                 screenOptions={{
                     headerStyle: {
                         backgroundColor: "#e98099",
@@ -82,6 +84,8 @@ export default function App () {
                     component={TimerSampleScreen}
                     options={{ headerShown: false }}
                 />
+                <Stack.Screen name="TagEditSubScreen" component={TagEditSubScreen} />
+
             </Stack.Navigator>
         </NavigationContainer>
     );
