@@ -1,5 +1,6 @@
-import React from "react";
-import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-native";
+import React, { useState, useEffect }from "react";
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity, Alert } from "react-native";
+import firebase from "firebase";
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
@@ -13,31 +14,48 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function TagMainScreen(props) {
     const { style, onPress, navigation } = props;
+    const [memos, setMemos] = useState ([]);
+
+    useEffect(() => {
+        const db = firebase.firestore();
+        const { currentUser } = firebase.auth();
+        let unsubscribe = () => {};
+        if (currentUser) {
+            const ref = db.collection(`users/${currentUser.uid}/memos`)
+            unsubscribe = ref.onSnapshot(( snapshot ) => {
+                const userMemos = [];
+                snapshot.forEach((doc) => {
+                    console.log(doc.id, doc.data());
+                    const data = doc.data();
+                    userMemos.push({
+                        id: doc.id,
+                        Title: data.Title,
+                        Time: data.Time,
+                    });
+                });
+                setMemos(userMemos);
+            }, (error) => {
+                console.log(error);
+                Alert.alert('データの読み込みに失敗しました。');
+            });
+        }
+        return unsubscribe;
+    }, []);
+
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
                 <TagHeader />
-                <ScrollView style={styles.tagBody}>
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                    <DefaultTag />
-                </ScrollView>
+                <View style={styles.tagBody}>   
+                    <DefaultTag memos={memos} />
+                </View>
             </View>
             <View style={styles.tagFooter}>
                 <HomeButton
                     onPress={() => { navigation.navigate("HomeScreen");} }
                 />
                 <EditButton 
-                    onPress={() => { navigation.navigate("TagEditScreen"); }} 
+                    onPress={() => { navigation.navigate("TagEditSubScreen"); }}
                 />
             </View>
             <ResumeButton

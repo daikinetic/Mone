@@ -1,53 +1,96 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, TextInput,TouchableOpacity } from "react-native";
+import { 
+    View, StyleSheet, Text, TextInput, TouchableOpacity, Alert, FlatList,
+} from "react-native";
 import { borderBottomColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
-import { string, shape, func } from "prop-types";
+import { useNavigation } from '@react-navigation/native';
+import { 
+    string, shape, func, instanceOf, arrayOf 
+} from "prop-types";
+import firebase from 'firebase';
 
 import { Entypo } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons'; 
 
 export default function DefaultTag(props) {
-    const { onPress } = props;
-    const [title, setTitle] = useState('');
-    const [time, setTime] = useState('');
-    return (
-        <View style={styles.tagItemPlace}>
-            <View style={styles.tagItem}>
-                <View style={styles.tagTitle}>
-                    <TextInput 
-                        style={styles.tagTitleText}
-                        value={title}
-                        onChangeText={(text) => { setTitle(text); }}
-                        placeholder="▶ Tag Title "
-                     />
-                </View>
-                <View style={styles.tagTimes}> 
-                    <View style={styles.tagTime}>
+    const { onPress, memos } = props;
+    const navigation = useNavigation();
+
+    function deleteMemo(id) {
+        const { currentUser } = firebase.auth(); 
+        if (currentUser) {
+            const db = firebase.firestore();
+            const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
+            Alert.alert('メモを削除します', 'よろしいですか？', [
+                {
+                    text: 'キャンセル',
+                    onPress: () => {},
+                },
+                {
+                    text: '削除する',
+                    style: 'destructive',
+                    onPress: () => {
+                        ref.delete().catch(() => {
+                            Alert.alert('削除に失敗しました');
+                        });
+                    },
+                },
+            ]);
+        }
+    }
+
+    function renderItem({ item }) {
+        return (
+            <TouchableOpacity 
+                style={styles.tagItemPlace}
+                onPress={() => { navigation.navigate('TagEditSubScreen', { id: item.id }); }}
+            >
+                <View style={styles.tagItem}>
+                    <View style={styles.tagTitle}>
                         <TextInput 
-                            style={styles.tagTimeText}
-                            value={time}
-                            onChangeText={(text) => { setTime(text); }}
-                            placeholder="xx"
-                        />
-                    </View>   
-                    <View style={styles.tagMin}>   
-                        <Text style={styles.tagMinText}>min</Text>
+                            style={styles.tagTitleText}
+                            value={item.Title}
+                            onChangeText={(text) => { setTitle(text); }}
+                            placeholder="▶ Tag Title "
+                            numberOfLines={1}
+                         />
+                    </View>
+                    <View style={styles.tagTimes}> 
+                        <View style={styles.tagTime}>
+                            <Text style={styles.tagTimeText}>
+                                {item.Time}
+                            </Text>
+                        </View>   
+                        <View style={styles.tagMin}>   
+                            <Text style={styles.tagMinText}>min</Text>
+                        </View>
                     </View>
                 </View>
-            </View>
-            <View style={styles.triangle}>
-                <Entypo name="triangle-down" size={28} color="#EC1A66" />
-            </View>
-            <TouchableOpacity
-                style={styles.plusBotton}
-                onPress={onPress}
-            >
-                <Feather name="plus" size={42} color="white" />
+                <View style={styles.triangle}>
+                    <Entypo name="triangle-down" size={28} color="#EC1A66" />
+                </View>
+                <TouchableOpacity
+                    style={styles.plusBotton}
+                    onPress={() => { deleteMemo(item.id); }}
+                >
+                    <Feather name="plus" size={42} color="white" />
+                </TouchableOpacity>
             </TouchableOpacity>
+        );
+    }
+
+    return (
+        <View style={styles.container}>
+            <FlatList
+                data={memos}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id} 
+            />
         </View>
-        
     );
 }
+
+
 
 DefaultTag.propTypes = {
     onPress: func,
@@ -58,9 +101,12 @@ DefaultTag.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
     tagItemPlace:{
         height: 87,
-        width: "97.5%"
+        width: "97.5%",
     },
     tagItem: {
         flexDirection: "row",

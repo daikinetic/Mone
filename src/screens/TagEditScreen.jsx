@@ -1,5 +1,9 @@
-import React from "react";
-import { View, StyleSheet, Text, ScrollView, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import {
+    View, StyleSheet, Text, ScrollView, TouchableOpacity, Alert
+} from "react-native";
+import { shape, string } from "prop-types";
+import firebase from 'firebase';
 
 import DefaultTag from "../components/DefaultTag";
 import TagHeader from "../components/TagHeader";
@@ -12,6 +16,27 @@ import { Entypo } from '@expo/vector-icons';
 
 export default function TagEditScreen(props) {
     const { style, onPress, navigation } = props;
+    const { id, bodyText } = props;
+    //const [body, setBody] = useState(bodyText);
+    const body = 'あああ';
+
+    function hundlePress () {
+        const { currentUser } = firebase.auth();
+        if (currentUser) {
+            const db = firebase.firestore ();
+            const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
+            ref.set({
+                bodyText: body,
+            })
+                .then(() => {
+                    navigation.navigate("TagMainScreen");
+                })
+                .catch((error) => {
+                    Alert.alert(error.code);
+                });
+        }
+    }
+    
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
@@ -42,7 +67,7 @@ export default function TagEditScreen(props) {
                     onPress={() => { navigation.navigate("HomeScreen");} }
                 />
                 <CheckButton
-                    onPress={ () => { navigation.navigate("TagMainScreen");} }
+                    onPress={ hundlePress }
                 />
             </View>
             <ResumeButton
