@@ -17,7 +17,7 @@ import SettingScreen from "./src/screens/SettingScreen";
 import SettingTimeScreen from "./src/screens/SettingTimeScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import StartScreen from "./src/screens/StartScreen";
-import TimerSampleScreen from "./src/screens/TimerSampleScreen"; 
+import TimerSampleScreen from "./src/screens/TimerSampleScreen";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA7dk0v-m25r9tX8AYQL9PxJik7LNtaJao",
@@ -38,7 +38,7 @@ export default function App () {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="HomeScreen"
+                initialRouteName="TimerSampleScreen"
                 screenOptions={{
                     headerStyle: {
                         backgroundColor: "#e98099",
