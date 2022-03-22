@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
-  View, Text, TextInput, StyleSheet
+  View, Text, TextInput, StyleSheet, Alert,
 } from 'react-native';
+import firebase from 'firebase';
 
 import Button from '../components/Button';
 
@@ -10,10 +11,23 @@ export default function RegisterStep2Screen(props) {
   const [username, setUsername] = useState('');
 
   function handlePress() {
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'HomeScreen' }],
-    });
+    const { currentUser } = firebase.auth();
+    const db = firebase.firestore();
+    const ref = db.collection(`users/${currentUser.uid}`);
+    ref.add({
+      username,
+    })
+      .then((docRef) => {
+        console.log('Created!', docRef.id);
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'HomeScreen' }],
+        });
+      })
+      .catch((error) => {
+        console.log('Error!', error);
+        Alert.alert(error.code);
+      });
   }
 
   return (
@@ -25,7 +39,6 @@ export default function RegisterStep2Screen(props) {
           style={styles.input}
           value={username}
           onChangeText={(text) => { setUsername(text); }}
-          autoCapitalize="none"
           placeholder="username"
         />
         <Button
