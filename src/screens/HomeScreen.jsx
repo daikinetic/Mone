@@ -35,7 +35,7 @@ export default function HomeScreen(props) {
 
   return (
     <View style={styles.container}>
-      <AppBar name="home" />
+      {/* <AppBar name="home" /> */}
       <View style={styles.greet}>
         {/* <Text style={styles.username}>me</Text> */}
         <Text style={styles.san}>me さん</Text>

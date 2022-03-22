@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 import AppBar from '../components/AppBar';
 import ButtonWithLogo from '../components/ButtonWithLogo';
@@ -12,7 +13,7 @@ export default function SettingScreen(props) {
   const { navigation } = props;
   return (
     <View style={styles.container}>
-      <AppBar name="gear" />
+      {/* <AppBar name="gear" /> */}
       <View style={styles.logoContainer}>
         <Text style={styles.logo}>□</Text>
         <Text style={styles.mone}>mone</Text>
@@ -38,8 +39,11 @@ export default function SettingScreen(props) {
         </TouchableOpacity>
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity onPress={() => { navigation.goBack(); }}>
-            <FontAwesome style={styles.footerLogo} name="home" size={50} color="#EC1A66" />
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => { navigation.goBack(); }}
+        >
+            <Entypo name="home" size={50} color="#EC1A66" />
             <Text style={styles.footerText}>Back</Text>
         </TouchableOpacity>
         <View style={styles.footLineContainer}>
@@ -148,6 +152,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     bottom: 8,
+  },
+  backButton: {
+    alignItems: 'center',
   },
   footerText: {
     color: '#EC1A66',

@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
+import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import firebase from 'firebase';
 
 import TagMainScreen from "./src/screens/TagMainScreen";
@@ -40,7 +42,7 @@ export default function App () {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="LogInScreen"
+                initialRouteName="TimerSampleScreen"
                 screenOptions={{
                     headerStyle: {
                         backgroundColor: "#e98099",
@@ -63,9 +65,17 @@ export default function App () {
                 <Stack.Screen name="LogInScreen" component={LogInScreen} />
                 <Stack.Screen name="RegisterStep1Screen" component={RegisterStep1Screen} />
                 <Stack.Screen name="RegisterStep2Screen" component={RegisterStep2Screen} />
-                <Stack.Screen name="SettingScreen" component={SettingScreen} />
+                <Stack.Screen
+                    name="SettingScreen"
+                    component={SettingScreen}
+                    options={{ headerTitle: () => <FontAwesome name="gear" size={40} color="white" /> }}
+                />
                 <Stack.Screen name="SettingTimeScreen" component={SettingTimeScreen} />
-                <Stack.Screen name="HomeScreen" component={HomeScreen} />
+                <Stack.Screen
+                    name="HomeScreen"
+                    component={HomeScreen}
+                    options={{ headerTitle: () => <Entypo name="home" size={40} color="white" />}}
+                />
                 <Stack.Screen name="StartScreen" component={StartScreen} />
                 <Stack.Screen
                     name="TimerSampleScreen"

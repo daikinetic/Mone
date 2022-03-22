@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 // import SliderComponent from '../components/SliderComponent';
 
@@ -41,6 +42,9 @@ export default function TimerSampleScreen() {
       <View style={styles.midMargin(count)}></View>
       <ImageBackground source={require('../static/Rectangle.png')} style={styles.image}>
       </ImageBackground>
+      <View style={styles.tag}>
+        <Text style={styles.tagTitle}>今日の服を決める</Text>
+      </View>
       <View style={styles.timer}>
         <Text>Count={count}</Text>
         <TouchableOpacity style={styles.startButton} onPress={start}>
@@ -76,13 +80,15 @@ export default function TimerSampleScreen() {
           </TouchableOpacity>
         </View>
       </View>
-      {/* <View style={styles.barContainer}>
-        <View style={styles.ball}></View>
-        <View style={styles.bar(count)}></View>
-      </View> */}
       <View style={styles.barContainer}>
-        <AntDesign style={styles.triangle} name="caretup" size={20} color="black" />
-        <View style={styles.bar(count)}></View>
+        <View>
+          <FontAwesome5 name="flag-checkered" size={24} color="black" />
+          <Text>3/10</Text>
+        </View>
+        <View style={styles.maxTrack}>
+          <AntDesign style={styles.triangle} name="caretup" size={20} color="black" />
+          <View style={styles.minTrack(count)}></View>
+        </View>
       </View>
       <Slider
         style={styles.slider}
@@ -119,21 +125,40 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  tag: {
+    position: 'absolute',
+    zIndex: 15,
+    backgroundColor: '#ffffff',
+    borderColor: '#EC1A66',
+    borderWidth: 2,
+    borderRadius: 10,
+    top: '46%',
+    bottom: '46%',
+    left: '20%',
+    right: '20%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tagTitle: {
+    color: '#EC1A66',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
   timer: {
     position: 'absolute',
     zIndex: 15,
-    top: '40%',
+    top: '20%',
     left: '20%',
     right: '20%',
   },
   controller: {
-    backgroundColor: 'blue',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     position: 'absolute',
     zIndex: 15,
-    bottom: '5%',
-    left: '20%',
-    right: '20%',
+    bottom: 10,
+    left: '15%',
+    right: '15%',
     height: '10%',
     padding: '5%',
     alignItems: 'center',
@@ -159,12 +184,23 @@ const styles = StyleSheet.create({
     height: 30,
   },
   barContainer: {
-    backgroundColor: '#EC1A66',
+    backgroundColor: 'pink',
     position: 'absolute',
     zIndex: 15,
     left: '10%',
     top: 70,
     height: 500,
+    width: 50,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  maxTrack: {
+    backgroundColor: '#EC1A66',
+    // position: 'absolute',
+    // zIndex: 15,
+    // left: '10%',
+    top: 70,
+    height: 430,
     width: 3,
     borderRadius: 5,
     justifyContent: 'flex-end',
@@ -183,7 +219,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 15,
   },
-  bar: (count) => ({
+  minTrack: (count) => ({
     backgroundColor: 'blue',
     height: `${count}%`,
     // height: '30%',
@@ -207,7 +243,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 15,
     top: 300,
-    left: '22%',
+    // left: '22%',
     width: 530,
     height: 40,
     // height: '100%',
