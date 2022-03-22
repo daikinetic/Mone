@@ -132,7 +132,7 @@ const styles = StyleSheet.create ({
     },
     checkButton: {
         position: "absolute",
-        right:"40%",
+        right:"42%",
         bottom: "10%",
     },
 })
