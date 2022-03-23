@@ -13,9 +13,9 @@ export default function RegisterStep2Screen(props) {
   function handlePress() {
     const { currentUser } = firebase.auth();
     const db = firebase.firestore();
-    const ref = db.collection(`users/${currentUser.uid}`);
+    const ref = db.collection(`users/${currentUser.uid}/username`);
     ref.add({
-      username,
+      Username: username,
     })
       .then((docRef) => {
         console.log('Created!', docRef.id);

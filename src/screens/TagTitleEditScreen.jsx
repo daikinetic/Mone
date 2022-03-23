@@ -62,6 +62,7 @@ const styles = StyleSheet.create ({
         flexDirection: "row",
         justifyContent:"center",
         height: 70,
+        marginBottom: 80,
     },
     tagTheme: {
         borderWidth: 2,

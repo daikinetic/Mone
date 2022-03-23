@@ -81,8 +81,8 @@ const styles = StyleSheet.create ({
         justifyContent: "center"
     },
     tagItemPlace:{
-        height: 87,
-        width: "97.5%",
+        height: 90,
+        width: "90%",
         position:"absolute",
         top: "30%"
     },
@@ -93,6 +93,7 @@ const styles = StyleSheet.create ({
         paddingRight: 15,
         borderWidth: 2.3,
         borderRadius: 20,
+        marginBottom: 20,
         borderColor: "#EC1A66",
         backgroundColor: "#ffffff",
         alignItems:"center",

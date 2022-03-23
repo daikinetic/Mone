@@ -45,7 +45,7 @@ export default function App () {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="TagMainScreen"
+                initialRouteName="LoggedOutScreen"
                 screenOptions={{
                     headerStyle: {
                         backgroundColor: "#e98099",
@@ -55,6 +55,7 @@ export default function App () {
                         fontSize: 24,
                         textAlign: "center",
                     },
+                    headerTitleAlign: "center",
                     headerTitle: "Mone",
                     headerTintColor: "#ffffff",
                     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
@@ -64,7 +65,11 @@ export default function App () {
                 <Stack.Screen name="TagEditScreen" component={TagEditScreen} />
                 <Stack.Screen name="TagOptionScreen" component={TagOptionScreen} />
                 <Stack.Screen name="TagPastScreen" component={TagPastScreen} />
-                <Stack.Screen name="LoggedOutScreen" component={LoggedOutScreen} />
+                <Stack.Screen 
+                    name="LoggedOutScreen"
+                    component={LoggedOutScreen}
+                    options={{ headerShown: false }}
+                />
                 <Stack.Screen name="LogInScreen" component={LogInScreen} />
                 <Stack.Screen name="RegisterStep1Screen" component={RegisterStep1Screen} />
                 <Stack.Screen name="RegisterStep2Screen" component={RegisterStep2Screen} />
