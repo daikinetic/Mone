@@ -121,7 +121,6 @@ const styles = StyleSheet.create({
         height: "115%",
         marginTop: "5.7%",
     },
-    
     tagFooter: {
         height: "12%",
         backgroundColor: "#EC1A66",
