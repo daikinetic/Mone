@@ -82,7 +82,7 @@ const styles = StyleSheet.create ({
     },
     tagItemPlace:{
         height: 87,
-        width: "97.5%",
+        width: "90%",
         position:"absolute",
         top: "30%"
     },
@@ -91,6 +91,7 @@ const styles = StyleSheet.create ({
         height: "69%",
         paddingLeft: 10,
         paddingRight: 15,
+        marginBottom: 20,
         borderWidth: 2.3,
         borderRadius: 20,
         borderColor: "#EC1A66",

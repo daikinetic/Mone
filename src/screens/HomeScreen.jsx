@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -12,7 +12,7 @@ import LogOutButton from '../components/LogOutButton';
 export default function HomeScreen(props) {
   const { navigation, route } = props;
   // const { id } = route.params;
-  // const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     navigation.setOptions({
@@ -20,25 +20,29 @@ export default function HomeScreen(props) {
     });
   }, []);
 
-  // useEffect(() => {
-  //   const { currentUser } = firebase.auth();
-  //   let unsubscribe = () => {};
-  //   if (currentUser) {
-  //     const db = firebase.firestore();
-  //     const ref = db.collection(`users/${currentUser.uid}`).doc(id);
-  //     unsubscribe = ref.onSnapshot((doc) => {
-  //       const data = doc.data();
-  //       setUsername(data.username);
-  //     });
-  //   }
-  // }, []);
+  useEffect(() => {
+    const db = firebase.firestore();
+    const { currentUser } = firebase.auth();
+    let unsubscribe = () => {};
+    if (currentUser) {
+      const ref = db.collection(`users/${currentUser.uid}/username`);
+      
+      unsubscribe = ref.onSnapshot((snapshot) => {
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          setUsername(data.Username);
+        });
+      });
+    }
+    return unsubscribe;
+  }, []);
 
   return (
     <View style={styles.container}>
       {/* <AppBar name="home" /> */}
       <View style={styles.greet}>
         {/* <Text style={styles.username}>me</Text> */}
-        <Text style={styles.san}>me さん</Text>
+        <Text style={styles.san}>{username} さん</Text>
         <Text style={styles.goodMorning}>おはようございます</Text>
       </View>
       <View style={styles.button12}>

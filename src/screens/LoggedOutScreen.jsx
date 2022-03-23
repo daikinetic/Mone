@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity
+  View, Text, StyleSheet, TouchableOpacity, ImageBackground,
 } from 'react-native';
 
 import Button from '../components/Button';
@@ -9,12 +9,14 @@ export default function LoggedOutScreen(props) {
   const { navigation } = props;
   return (
     <View style={styles.container}>
+      <ImageBackground source={require('../static/Rectangle.png')} style={styles.image}>
+      </ImageBackground>
       <View style={styles.logo}>
         <Text style={styles.logoImage}>□</Text>
         <Text style={styles.logoText}>mone</Text>
       </View>
       <View style={styles.footer}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.leftButton}
           onPress={() => {
             navigation.navigate('LogInScreen');
@@ -39,11 +41,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  image: {
+    position: 'absolute',
+    width: '100%',
+    height: '92%',
+  },
   logo: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'blue',
+    // backgroundColor: 'blue',
     height: '85%',
   },
   logoImage: {
