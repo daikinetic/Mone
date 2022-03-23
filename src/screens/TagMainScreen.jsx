@@ -16,17 +16,18 @@ export default function TagMainScreen(props) {
     const { style, onPress, navigation } = props;
     const [memos, setMemos] = useState ([]);
     const [headers, setHeaders] = useState ([]);
+    // let memoData = 0;
+    // let timeAllConst = 0;
 
     useEffect(() => {
         const db = firebase.firestore();
         const { currentUser } = firebase.auth();
         let unsubscribe = () => {};
-        let unsubscribe1 = () => {};
+        // let timeAll = 0; 
         if (currentUser) {
             const ref = db.collection(`users/${currentUser.uid}/memos`)
-            const ref1 = db.collection(`users/${currentUser.uid}/headers`)
             
-            unsubscribe = ref.onSnapshot(( snapshot ) => {
+            unsubscribe = ref.onSnapshot (( snapshot ) => {
                 const userMemos = [];
                 snapshot.forEach((doc) => {
                     console.log(doc.id, doc.data());
@@ -37,13 +38,29 @@ export default function TagMainScreen(props) {
                         Time: data.Time,
                     });
                 });
+                /* timeAllConst = userMemos[0].Time;
+                
+                memoData.forEach((doc) => {
+                    timeAll += Number(doc.Time);
+                });
+                */
                 setMemos(userMemos);
             }, (error) => {
                 console.log(error);
                 Alert.alert('データの読み込みに失敗しました。');
             });
+        }
+        return unsubscribe;
+    }, []);
 
-            unsubscribe1 = ref1.onSnapshot(( snapshot ) => {
+    useEffect(() => {
+        const db = firebase.firestore();
+        const { currentUser } = firebase.auth();
+        let unsubscribe = () => {};
+        if (currentUser) {
+            const ref = db.collection(`users/${currentUser.uid}/headers`)
+
+            unsubscribe = ref.onSnapshot(( snapshot ) => {
                 const userHeaders = [];
                 snapshot.forEach((doc) => {
                     console.log(doc.id, doc.data());
@@ -58,13 +75,17 @@ export default function TagMainScreen(props) {
                 Alert.alert('データの読み込みに失敗しました。');
             });
         }
-        return [unsubscribe, unsubscribe1];
+        return unsubscribe;
     }, []);
 
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
-                <TagHeader headers={headers} />
+                <TagHeader 
+                    headers={headers}
+                    memos={memos}
+                    //timeAll={timeAllConst}
+                />
                 <View style={styles.tagBody}>   
                     <DefaultTag memos={memos} />
                 </View>
@@ -100,6 +121,7 @@ const styles = StyleSheet.create({
         height: "115%",
         marginTop: "5.7%",
     },
+    
     tagFooter: {
         height: "12%",
         backgroundColor: "#EC1A66",
