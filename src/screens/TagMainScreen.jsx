@@ -25,7 +25,7 @@ export default function TagMainScreen(props) {
         let unsubscribe = () => {};
         // let timeAll = 0; 
         if (currentUser) {
-            const ref = db.collection(`users/${currentUser.uid}/memos`)
+            const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'asc')
             
             unsubscribe = ref.onSnapshot (( snapshot ) => {
                 const userMemos = [];

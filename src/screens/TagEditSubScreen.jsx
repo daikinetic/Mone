@@ -21,6 +21,7 @@ export default function TagEditSubScreen ( props ) {
             ref.add({
                 Title: title,
                 Time: time,
+                updatedAt: new Date(),
             })
                 .then(() => {
                     navigation.navigate("TagMainScreen");
