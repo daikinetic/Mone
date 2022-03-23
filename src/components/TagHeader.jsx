@@ -1,14 +1,23 @@
-import React, {useState} from "react";
-import { View, StyleSheet, Text, TextInput } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import firebase from 'firebase';
 
-export default function TagHeader() {
+export default function TagHeader( props ) {
+    const { onPress, headers } = props;
+    const navigation = useNavigation();
     const [header, setHeader] = useState('');
+
     return (
-        <View style={styles.tagHeader}>
+
+        <TouchableOpacity
+            style={styles.tagHeader}
+            onPress={() => { navigation.navigate('TagTitleEditScreen', { id: headers.id }); }}
+        >
             <View style={styles.tagTheme}>
                 <TextInput
                     style={styles.themeText}
-                    value={header}
+                    value={headers[0].Header}
                     onChangeText={(text) => { setHeader(text); }}
                     placeholder="▶ Routine Name"
                 />
@@ -21,7 +30,7 @@ export default function TagHeader() {
                     <Text style={styles.tagTimeAllMinText}>min</Text>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 

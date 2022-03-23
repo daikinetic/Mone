@@ -15,13 +15,17 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 export default function TagMainScreen(props) {
     const { style, onPress, navigation } = props;
     const [memos, setMemos] = useState ([]);
+    const [headers, setHeaders] = useState ([]);
 
     useEffect(() => {
         const db = firebase.firestore();
         const { currentUser } = firebase.auth();
         let unsubscribe = () => {};
+        let unsubscribe1 = () => {};
         if (currentUser) {
             const ref = db.collection(`users/${currentUser.uid}/memos`)
+            const ref1 = db.collection(`users/${currentUser.uid}/headers`)
+            
             unsubscribe = ref.onSnapshot(( snapshot ) => {
                 const userMemos = [];
                 snapshot.forEach((doc) => {
@@ -38,14 +42,29 @@ export default function TagMainScreen(props) {
                 console.log(error);
                 Alert.alert('データの読み込みに失敗しました。');
             });
+
+            unsubscribe1 = ref1.onSnapshot(( snapshot ) => {
+                const userHeaders = [];
+                snapshot.forEach((doc) => {
+                    console.log(doc.id, doc.data());
+                    const data = doc.data();
+                    userHeaders.push({
+                        Header: data.Header,
+                    });
+                });
+                setHeaders(userHeaders);
+            }, (error) => {
+                console.log(error);
+                Alert.alert('データの読み込みに失敗しました。');
+            });
         }
-        return unsubscribe;
+        return [unsubscribe, unsubscribe1];
     }, []);
 
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
-                <TagHeader />
+                <TagHeader headers={headers} />
                 <View style={styles.tagBody}>   
                     <DefaultTag memos={memos} />
                 </View>
