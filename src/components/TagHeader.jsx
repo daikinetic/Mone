@@ -4,9 +4,17 @@ import { useNavigation } from '@react-navigation/native';
 import firebase from 'firebase';
 
 export default function TagHeader( props ) {
-    const { onPress, headers } = props;
+    const { onPress, headers, memos } = props;
     const navigation = useNavigation();
     const [header, setHeader] = useState('');
+    let timeAll = 0;
+    let theme = '';
+    memos.forEach((doc) => {
+        timeAll += Number(doc.Time);
+    });
+    headers.forEach((doc) => {
+        theme = doc.Header;
+    });
 
     return (
 
@@ -17,14 +25,14 @@ export default function TagHeader( props ) {
             <View style={styles.tagTheme}>
                 <TextInput
                     style={styles.themeText}
-                    value={headers[0].Header}
+                    value={theme}
                     onChangeText={(text) => { setHeader(text); }}
                     placeholder="▶ Routine Name"
                 />
             </View>
             <View style={styles.tagTimeAllContainer}>
                 <View style={styles.tagTimeAll}>
-                    <Text style={styles.tagTimeAllText}>120</Text>
+                    <Text style={styles.tagTimeAllText}>{timeAll}</Text>
                 </View>
                 <View style={styles.tagTimeAllMin}>
                     <Text style={styles.tagTimeAllMinText}>min</Text>
