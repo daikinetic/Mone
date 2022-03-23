@@ -43,7 +43,7 @@ export default function DefaultTag(props) {
         return (
             <TouchableOpacity 
                 style={styles.tagItemPlace}
-                onPress={() => { navigation.navigate('TagEditSubScreen', { id: item.id }); }}
+                onPress={() => { navigation.navigate('TagEditSubScreen', { id: item.id, titleText: item.Title, timeText: item.Time }); }}
             >
                 <View style={styles.tagItem}>
                     <View style={styles.tagTitle}>
