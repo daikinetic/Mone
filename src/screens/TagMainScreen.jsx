@@ -95,7 +95,7 @@ export default function TagMainScreen(props) {
                     onPress={() => { navigation.navigate("HomeScreen");} }
                 />
                 <EditButton 
-                    onPress={() => { navigation.navigate("TagEditSubScreen"); }}
+                    onPress={() => { navigation.navigate("TagMakingScreen"); }}
                 />
             </View>
             <ResumeButton

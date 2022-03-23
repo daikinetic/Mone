@@ -9,21 +9,21 @@ import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 import { useEffect } from "react/cjs/react.production.min";
 
-export default function TagEditSubScreen ( props ) {
-    const { navigation, route } = props;
-    const { id, titleText, timeText } = route.params;
-    const [title, setTitle] = useState(titleText);
-    const [time, setTime] = useState(timeText);
+export default function TagMakingScreen ( props ) {
+    const { navigation } = props;
+    const [title, setTitle] = useState('');
+    const [time, setTime] = useState('');
 
     function hundlePress () {
         const { currentUser } = firebase.auth();
         if (currentUser) {
             const db = firebase.firestore ();
-            const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
-            ref.set({
+            const ref = db.collection(`users/${currentUser.uid}/memos`);
+            ref.add({
                 Title: title,
                 Time: time,
-            }, { merge: true })
+                updatedAt: new Date(),
+            })
                 .then(() => {
                     navigation.navigate("TagMainScreen");
                 })
