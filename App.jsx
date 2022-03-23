@@ -21,7 +21,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 import StartScreen from "./src/screens/StartScreen";
 import TimerSampleScreen from "./src/screens/TimerSampleScreen"; 
 import TagEditSubScreen from "./src/screens/TagEditSubScreen";
-
+import TagTitleEditScreen from "./src/screens/TagTitleEditScreen";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA7dk0v-m25r9tX8AYQL9PxJik7LNtaJao",
@@ -85,7 +85,7 @@ export default function App () {
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen name="TagEditSubScreen" component={TagEditSubScreen} />
-
+                <Stack.Screen name="TagTitleEditScreen" component={TagTitleEditScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
