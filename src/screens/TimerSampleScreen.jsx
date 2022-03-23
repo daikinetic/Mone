@@ -39,8 +39,9 @@ export default function TimerSampleScreen() {
     setCount(0);
   }
   // console.log(count);
-  if (count == 100) {
-    stop();
+  if (count >= 100) {
+    setNumerator(c => c + 1);
+    reset();
   }
 
   useEffect(() => {
@@ -143,7 +144,7 @@ export default function TimerSampleScreen() {
           <Text style={styles.ratio}>{numerator}/{memos.length}</Text>
         </View>
         <View style={styles.maxTrack}>
-          <AntDesign style={styles.triangle} name="caretup" size={20} color="gray" />
+          <AntDesign style={styles.triangle} name="caretup" size={20} color="#acb3bf" />
           <View style={styles.minTrack(numerator, memos.length)}></View>
         </View>
       </View>
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
   barContainer: {
     position: 'absolute',
     zIndex: 15,
-    left: '5%',
+    left: '4%',
     top: 30,
     height: 540,
     width: 50,
@@ -305,7 +306,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 15,
     top: 300,
-    // left: '22%',
+    left: '22%',
     width: 530,
     height: 40,
     // height: '100%',
