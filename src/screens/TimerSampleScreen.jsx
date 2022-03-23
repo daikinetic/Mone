@@ -1,16 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity, ImageBackground,
+  View, Text, StyleSheet, TouchableOpacity, ImageBackground, Alert,
 } from 'react-native';
 import Slider from '@react-native-community/slider';
+import firebase from 'firebase';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 // import SliderComponent from '../components/SliderComponent';
+import TaskTag from '../components/TaskTag';
 
 export default function TimerSampleScreen() {
   const [count, setCount] = useState(0);
-  const [icon, setIcon] = useState('pause');
+  const [icon, setIcon] = useState('controller-paus');
+  const [memos, setMemos] = useState([]);
+  const [numerator, setNumerator] = useState(1);
+  const [title, setTitle] = useState('');
+  // const denominator = 10;
 
   const intervalRef = useRef(null);
   const start = () => {
@@ -32,9 +39,39 @@ export default function TimerSampleScreen() {
     setCount(0);
   }
   // console.log(count);
-  if (count >= 100) {
+  if (count == 100) {
     stop();
   }
+
+  useEffect(() => {
+    start();
+  }, []);
+
+  useEffect(() => {
+    const db = firebase.firestore();
+    const { currentUser } = firebase.auth();
+    let unsubscribe = () => {};
+    if (currentUser) {
+      const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'asc');
+      unsubscribe = ref.onSnapshot((snapshot) => {
+        const userMemos = [];
+        snapshot.forEach((doc) => {
+          console.log(doc.id, doc.data());
+          const data = doc.data();
+          userMemos.push({
+            id: doc.id,
+            Title: data.Title,
+            Time: data.Time,
+            updatedAt: data.updatedAt.toDate(),
+          });
+        });
+        setMemos(userMemos);
+      }, () => {
+        Alert.alert('データの読み込みに失敗しました。');
+      });
+    }
+    return unsubscribe; //memos = [{id: title: time: updatedAt: }, {}, {}, {}]
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -42,10 +79,14 @@ export default function TimerSampleScreen() {
       <View style={styles.midMargin(count)}></View>
       <ImageBackground source={require('../static/Rectangle.png')} style={styles.image}>
       </ImageBackground>
-      <View style={styles.tag}>
-        <Text style={styles.tagTitle}>今日の服を決める</Text>
-      </View>
-      <View style={styles.timer}>
+      <TaskTag
+        memos={memos}
+        index={numerator}
+      />
+      {/* <View style={styles.tag}>
+        <Text style={styles.tagTitle}>歯磨き</Text>
+      </View> */}
+      {/* <View style={styles.timer}>
         <Text>Count={count}</Text>
         <TouchableOpacity style={styles.startButton} onPress={start}>
           <Text>start</Text>
@@ -56,38 +97,54 @@ export default function TimerSampleScreen() {
         <TouchableOpacity style={styles.resetButton} onPress={reset}>
           <Text>reset</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
       <View style={styles.controller}>
         <View style={styles.controllerInner}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              if (numerator > 1) {
+                setNumerator(c => c - 1);
+                reset();
+                start();
+              }
+            }}
+          >
             <AntDesign name="arrowleft" size={35} color="#EC1A66" />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               if (intervalRef.current !== null) {
                 stop();
-                setIcon('caretright');
+                setIcon('controller-play');
               } else {
                 start();
-                setIcon('pause');
+                setIcon('controller-paus');
               }
             }}
           >
-            <AntDesign name={icon} size={35} color="#EC1A66" />
+            <Entypo name={icon} size={35} color="#EC1A66" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              if (numerator < memos.length) {
+                setNumerator(c => c + 1);
+                reset();
+                start();
+              }
+            }}
+          >
             <AntDesign name="arrowright" size={35} color="#EC1A66" />
           </TouchableOpacity>
         </View>
       </View>
       <View style={styles.barContainer}>
-        <View>
-          <FontAwesome5 name="flag-checkered" size={24} color="black" />
-          <Text>3/10</Text>
+        <View style={styles.barHeader}>
+          <FontAwesome5 name="flag-checkered" size={24} color="#EC1A66" />
+          <Text style={styles.ratio}>{numerator}/{memos.length}</Text>
         </View>
         <View style={styles.maxTrack}>
-          <AntDesign style={styles.triangle} name="caretup" size={20} color="black" />
-          <View style={styles.minTrack(count)}></View>
+          <AntDesign style={styles.triangle} name="caretup" size={20} color="gray" />
+          <View style={styles.minTrack(numerator, memos.length)}></View>
         </View>
       </View>
       <Slider
@@ -125,25 +182,25 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  tag: {
-    position: 'absolute',
-    zIndex: 15,
-    backgroundColor: '#ffffff',
-    borderColor: '#EC1A66',
-    borderWidth: 2,
-    borderRadius: 10,
-    top: '46%',
-    bottom: '46%',
-    left: '20%',
-    right: '20%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  tagTitle: {
-    color: '#EC1A66',
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
+  // tag: {
+  //   position: 'absolute',
+  //   zIndex: 15,
+  //   backgroundColor: '#ffffff',
+  //   borderColor: '#EC1A66',
+  //   borderWidth: 2,
+  //   borderRadius: 10,
+  //   top: '46%',
+  //   bottom: '46%',
+  //   left: '20%',
+  //   right: '20%',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  // tagTitle: {
+  //   color: '#EC1A66',
+  //   fontSize: 15,
+  //   fontWeight: 'bold',
+  // },
   timer: {
     position: 'absolute',
     zIndex: 15,
@@ -184,23 +241,29 @@ const styles = StyleSheet.create({
     height: 30,
   },
   barContainer: {
-    backgroundColor: 'pink',
     position: 'absolute',
     zIndex: 15,
-    left: '10%',
-    top: 70,
-    height: 500,
+    left: '5%',
+    top: 30,
+    height: 540,
     width: 50,
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
+  barHeader: {
+    alignItems: 'center',
+  },
+  ratio: {
+    color: '#EC1A66',
+    fontWeight: 'bold',
+  },
   maxTrack: {
-    backgroundColor: '#EC1A66',
+    backgroundColor: 'pink',
     // position: 'absolute',
     // zIndex: 15,
     // left: '10%',
-    top: 70,
-    height: 430,
+    top: 5,
+    height: 480,
     width: 3,
     borderRadius: 5,
     justifyContent: 'flex-end',
@@ -215,13 +278,12 @@ const styles = StyleSheet.create({
   //   borderRadius: 12.5,
   // },
   triangle: {
-    backgroundColor: 'green',
     width: 20,
-    height: 15,
+    height: 13,
   },
-  minTrack: (count) => ({
-    backgroundColor: 'blue',
-    height: `${count}%`,
+  minTrack: (numerator, denominator) => ({
+    backgroundColor: '#EC1A66',
+    height: `${numerator/denominator*100}%`,
     // height: '30%',
     width: '100%',
   }),
