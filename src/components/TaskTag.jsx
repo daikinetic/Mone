@@ -9,7 +9,7 @@ export default function TaskTag (props) {
     });
     return (
         <View style={styles.tag}>
-            <Text style={styles.tagTitle}>{taskList[{index}]}</Text>
+            <Text style={styles.tagTitle}>{taskList[index-1]}</Text>
         </View>
     );
 }
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     tag: {
         position: 'absolute',
         zIndex: 15,
+        elevation: 0.05,
         backgroundColor: '#ffffff',
         borderColor: '#EC1A66',
         borderWidth: 2,
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
     tagTitle: {
         color: '#EC1A66',
         fontSize: 15,
+        elevation: 0.06,
         fontWeight: 'bold',
     },
 });
