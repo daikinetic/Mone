@@ -12,6 +12,7 @@ import firebase from 'firebase';
 import { Entypo } from '@expo/vector-icons'; 
 import { Feather } from '@expo/vector-icons'; 
 
+
 export default function DefaultTag(props) {
     const { onPress, memos } = props;
     const navigation = useNavigation();
