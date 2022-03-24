@@ -4,6 +4,8 @@ import {
 } from 'react-native';
 
 import Button from '../components/Button';
+import { Entypo } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'; 
 
 export default function LoggedOutScreen(props) {
   const { navigation } = props;
@@ -12,8 +14,10 @@ export default function LoggedOutScreen(props) {
       <ImageBackground source={require('../static/Rectangle.png')} style={styles.image}>
       </ImageBackground>
       <View style={styles.logo}>
-        <Text style={styles.logoImage}>□</Text>
-        <Text style={styles.logoText}>mone</Text>
+        <Text style={styles.logoImage}>
+          <Entypo name="hour-glass" size={34} color="#02B3DE" />
+        </Text>
+        <Text style={styles.logoText}> mone</Text>
       </View>
       <View style={styles.footer}>
         <TouchableOpacity
@@ -54,12 +58,12 @@ const styles = StyleSheet.create({
     height: '85%',
   },
   logoImage: {
-    fontSize: 48,
-    lineHeight: 54,
+    marginRight: -5
   },
   logoText: {
     fontSize: 48,
     lineHeight: 54,
+    color: "#000000"
   },
   footer: {
     flex: 1,

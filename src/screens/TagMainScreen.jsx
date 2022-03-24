@@ -11,6 +11,7 @@ import ResumeButton from "../components/ResumeButton";
 import { Feather } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons'; 
 
 export default function TagMainScreen(props) {
     const { style, onPress, navigation } = props;

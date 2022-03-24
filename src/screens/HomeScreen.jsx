@@ -80,7 +80,9 @@ export default function HomeScreen(props) {
       </View>
       <View style={styles.footer}>
         <View style={styles.footerLogo}>
-          <Text style={styles.logo}>□</Text>
+          <Text style={styles.logo}>
+            <Entypo name="hour-glass" size={34} color="#02B3DE" />
+          </Text>
           <Text style={styles.mone}>mone</Text>
         </View>
         <View style={styles.footLineContainer}>
@@ -124,6 +126,7 @@ const styles = StyleSheet.create({
     width: '46%',
     alignItems: 'center',
     borderRadius: 10,
+    padding:3
   },
   play: {
     margin: 20,
@@ -131,7 +134,8 @@ const styles = StyleSheet.create({
   button1Text: {
     color: '#ffffff',
     fontWeight: 'bold',
-    width: '80%',
+    width: '70%',
+    textAlign: "center"
   },
   button2: {
     backgroundColor: '#ffffff',
@@ -140,6 +144,7 @@ const styles = StyleSheet.create({
     width: '46%',
     alignItems: 'center',
     borderRadius: 10,
+    padding:3
   },
   plus: {
     margin: 16,
@@ -147,7 +152,7 @@ const styles = StyleSheet.create({
   button2Text: {
     color: '#EC1A66',
     fontWeight: 'bold',
-    lineHeight: 40,
+    lineHeight: 30,
   },
   button34: {
     flexDirection: 'row',
@@ -163,21 +168,23 @@ const styles = StyleSheet.create({
     width: '46%',
     alignItems: 'center',
     borderRadius: 10,
+    padding:3
   },
   button3Icon: {
     flexDirection: 'row',
-    margin: 25,
+    margin: 24,
   },
   button3Text: {
     color: '#EC1A66',
     fontWeight: 'bold',
-    lineHeight: 40,
+    lineHeight: 30,
   },
   button4: {
     backgroundColor: '#EC1A66',
     width: '46%',
     alignItems: 'center',
     borderRadius: 10,
+    padding:3
   },
   gear: {
     margin: 20,
@@ -185,7 +192,7 @@ const styles = StyleSheet.create({
   button4Text: {
     color: '#ffffff',
     fontWeight: 'bold',
-    lineHeight: 40,
+    lineHeight: 30,
   },
   footer: {
     flex: 1,
