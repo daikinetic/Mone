@@ -42,11 +42,13 @@ export default function DefaultTag(props) {
 
     function renderItem({ item }) {
         return (
-            <TouchableOpacity 
+            <View 
                 style={styles.tagItemPlace}
-                onPress={() => { navigation.navigate('TagEditSubScreen', { id: item.id, titleText: item.Title, timeText: item.Time }); }}
             >
-                <View style={styles.tagItem}>
+                <TouchableOpacity
+                    style={styles.tagItem}
+                    onPress={() => { navigation.navigate('TagEditSubScreen', { id: item.id, titleText: item.Title, timeText: item.Time }); }}
+                >
                     <View style={styles.tagTitle}>
                         <TextInput 
                             style={styles.tagTitleText}
@@ -66,7 +68,7 @@ export default function DefaultTag(props) {
                             <Text style={styles.tagMinText}>min</Text>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.triangle}>
                     <Entypo name="triangle-down" size={28} color="#EC1A66" />
                 </View>
@@ -76,7 +78,7 @@ export default function DefaultTag(props) {
                 >
                     <Feather name="plus" size={42} color="white" />
                 </TouchableOpacity>
-            </TouchableOpacity>
+            </View>
         );
     }
 
