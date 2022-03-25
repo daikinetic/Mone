@@ -82,7 +82,7 @@ export default function App () {
                 <Stack.Screen
                     name="HomeScreen"
                     component={HomeScreen}
-                    options={{ headerTitle: () => <Entypo name="home" size={40} color="white" />}}
+                    options={{ headerTitle: () => <Entypo name="home" size={36} color="white" />}}
                 />
                 <Stack.Screen name="StartScreen" component={StartScreen} />
                 <Stack.Screen

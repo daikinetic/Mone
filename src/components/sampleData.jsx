@@ -4,68 +4,68 @@ var data = [{
     "myFirstRutine": [  {
         "taskName": "布団を畳んでクローゼットにしまう",
         "taskTime": 6,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "水を500ml飲む",
         "taskTime": 5,
-        "processTime": ,
+        "processTime": '',
     }, 
     {
-        "taskName": "カーテンを空けて陽にあたる",
+        "taskName": "カーテンを開けて陽にあたる",
         "taskTime": 6,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "今日の服を決める",
         "taskTime": 12,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "テーブルの上を片付ける",
         "taskTime": 6,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "ポットに水を淹れて、スイッチを入れる",
         "taskTime": 4,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "軽食の準備をする",
         "taskTime": 6,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "プレイリストを掛ける",
         "taskTime": 3,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "朝食をとる",
         "taskTime": 15,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "シャワーを浴びる",
         "taskTime": 10,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "余白",
         "taskTime": 10,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "出かける準備をする",
         "taskTime": 12,
-        "processTime": ,
+        "processTime": '',
     },
     {
         "taskName": "散歩に出かける",
         "taskTime": 30,
-        "processTime": ,
-    },
+        "processTime": '',
+    }],
     /*
     "mySecondRutine": [ {
         "taskName": "水を500ml飲む",

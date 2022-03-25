@@ -47,7 +47,7 @@ export default function HomeScreen(props) {
       </View>
       <View style={styles.button12}>
         <TouchableOpacity style={styles.button1}>
-          <AntDesign style={styles.play} name="playcircleo" size={50} color="white" />
+          <FontAwesome style={styles.play} name="play-circle" size={44} color="white" />
           <Text style={styles.button1Text}>Quick Start Preset Project</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -63,8 +63,8 @@ export default function HomeScreen(props) {
       <View style={styles.button34}>
         <TouchableOpacity style={styles.button3}>
           <View style={styles.button3Icon}>
-            <FontAwesome style={styles.chart} name="bar-chart" size={40} color="#EC1A66" />
-            <AntDesign style={styles.share} name="sharealt" size={40} color="#EC1A66" />
+            <FontAwesome style={styles.chart} name="bar-chart" size={34} color="#EC1A66" />
+            <AntDesign style={styles.share} name="sharealt" size={34} color="#EC1A66" />
           </View>
           <Text style={styles.button3Text}>Logs / Share</Text>
         </TouchableOpacity>
@@ -74,7 +74,7 @@ export default function HomeScreen(props) {
             navigation.navigate('SettingScreen');
           }}
         >
-          <FontAwesome style={styles.gear} name="gear" size={50} color="white" />
+          <FontAwesome style={styles.gear} name="gear" size={44} color="white" />
           <Text style={styles.button4Text}>Settings</Text>
         </TouchableOpacity>
       </View>
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   greet: {
     height: 60,
-    marginVertical: 20,
+    marginVertical: 35,
     alignItems: 'center',
   },
   san: {
@@ -126,16 +126,19 @@ const styles = StyleSheet.create({
     width: '46%',
     alignItems: 'center',
     borderRadius: 10,
-    padding:3
+    padding:3,
+    paddingTop:5
   },
   play: {
-    margin: 20,
+    margin: 17,
+    marginTop:23
   },
   button1Text: {
     color: '#ffffff',
     fontWeight: 'bold',
     width: '70%',
-    textAlign: "center"
+    textAlign: "center",
+    marginTop:-5
   },
   button2: {
     backgroundColor: '#ffffff',
@@ -147,7 +150,8 @@ const styles = StyleSheet.create({
     padding:3
   },
   plus: {
-    margin: 16,
+    margin: 8,
+    marginTop:22
   },
   button2Text: {
     color: '#EC1A66',
@@ -172,7 +176,11 @@ const styles = StyleSheet.create({
   },
   button3Icon: {
     flexDirection: 'row',
-    margin: 24,
+    margin: 14,
+    marginTop:30
+  },
+  chart: {
+    marginRight:5
   },
   button3Text: {
     color: '#EC1A66',
@@ -187,7 +195,8 @@ const styles = StyleSheet.create({
     padding:3
   },
   gear: {
-    margin: 20,
+    margin: 7,
+    marginTop: 28
   },
   button4Text: {
     color: '#ffffff',
