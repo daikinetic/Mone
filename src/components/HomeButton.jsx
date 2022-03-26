@@ -15,7 +15,7 @@ export default function HomeButton (props) {
             style={[ styles.homeButton, style ]}
             onPress={ onPress }
         >
-            <Entypo name="home" size={38} color="white" />
+            <Entypo name="home" size={32} color="#EC1A66" />
         </TouchableOpacity>
     );
 }
@@ -24,6 +24,6 @@ const styles = StyleSheet.create({
     homeButton: {
         position: "absolute",
         justifyContent:"center",
-        left:"15%",
+        left:"17%",
     },
 })

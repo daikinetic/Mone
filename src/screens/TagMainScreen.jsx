@@ -116,17 +116,18 @@ const styles = StyleSheet.create({
     tagArea: {
         margin: 1,
         padding: "4.5%",
-        height: "88%",
+        height: "90%",
     },
     tagBody: {
         height: "115%",
         marginTop: "5.7%",
     },
     tagFooter: {
-        height: "12%",
-        backgroundColor: "#EC1A66",
+        height: "10%",
+        backgroundColor: "#ffffff",
         justifyContent:"center",
         shadowColor: "#000000",
+        elevation:50
     },
     homeButton: {
         position: "absolute",

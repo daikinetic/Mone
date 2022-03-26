@@ -23,7 +23,7 @@ export default function ResumeButton (props) {
             </View>
 
             <View style={styles.rightTriangle}>
-                <Entypo name="triangle-right" size={65} color="white" />
+                <Entypo name="triangle-right" size={52} color="white" />
             </View>
         </TouchableOpacity>
     );
@@ -34,14 +34,15 @@ const styles = StyleSheet.create ({
         width:"100%",
         height: "10%",
         position: "absolute",
-        bottom: "6%",
+        bottom: "4.5%",
         justifyContent:"center",
         alignItems: "center",
+        elevation: 50
     },
     whiteCircle: {
-        width: 70,
-        height: 70,
-        backgroundColor: "rgba(255,255,255,0)",
+        width: 62,
+        height: 62,
+        backgroundColor: "rgba(255,255,255,1)",
         borderRadius: 37.5,
         elevation: 1.5,
         position: "absolute",
@@ -49,8 +50,8 @@ const styles = StyleSheet.create ({
         marginHorizontal: "auto"
     },
     redCircle: {
-        width: 60,
-        height: 60,
+        width: 53,
+        height: 53,
         backgroundColor: "#EC1A66",
         borderRadius: 32.5,
         elevation: 1.6,
@@ -61,6 +62,6 @@ const styles = StyleSheet.create ({
     rightTriangle: {
         elevation:3,
         position: "absolute",
-        bottom:0.5
+        bottom:4
     },
 })
