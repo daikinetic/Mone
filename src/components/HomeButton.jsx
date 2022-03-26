@@ -15,7 +15,7 @@ export default function HomeButton (props) {
             style={[ styles.homeButton, style ]}
             onPress={ onPress }
         >
-            <Entypo name="home" size={48} color="white" />
+            <Entypo name="home" size={38} color="white" />
         </TouchableOpacity>
     );
 }

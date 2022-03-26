@@ -16,7 +16,7 @@ export default function EditButton (props) {
             style={styles.editButton}
             onPress={ onPress }
         >
-            <MaterialCommunityIcons name="pencil" size={48} color="#ffffff" />
+            <MaterialCommunityIcons name="pencil" size={38} color="#ffffff" />
         </TouchableOpacity>
     );
 }
