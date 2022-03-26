@@ -32,7 +32,7 @@ export default function ResumeButton (props) {
 const styles = StyleSheet.create ({
     resumeButton: {
         width:"100%",
-        height: "1%",
+        height: "6%",
         position: "absolute",
         bottom: "5%",
         justifyContent:"center",
