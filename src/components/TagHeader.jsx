@@ -46,27 +46,28 @@ const styles = StyleSheet.create ({
     tagHeader: {
         flexDirection: "row",
         justifyContent:"center",
-        height: 70,
+        height: 65,
+        marginRight:8
     },
     tagTheme: {
-        borderWidth: 2,
+        borderWidth: 1,
         borderRadius: 20,
         borderColor: '#ffffff',
         backgroundColor: '#EC1A66',
         alignItems: "center",
         justifyContent: "center",
-        width: "77%",
+        width: "78%",
         height: "100%",
     },
     themeText: {
         color: '#ffffff',
-        fontSize: 18,
+        fontSize: 16.5,
         fontWeight: "bold"
     },
     tagTimeAllContainer: {
         paddingTop: "3%",
-        paddingLeft: "2%",
-        width: "23%",
+        paddingLeft: "1%",
+        width: "22%",
         justifyContent:"center"
     },
     tagTimeAll: {
@@ -76,16 +77,16 @@ const styles = StyleSheet.create ({
     },
     tagTimeAllText: {
         color: '#EC1A66',
-        fontSize: 28,
+        fontSize: 24,
         textAlign: "center",
         fontWeight: "bold",
-        height: 30
+        height: 26
     },
     tagTimeAllMin:{
         
     },
     tagTimeAllMinText: {
-        color: "#ffffff",
+        color: "#ec1a66",
         fontSize: 17,
         fontWeight: "bold",
         textAlign: 'right',
