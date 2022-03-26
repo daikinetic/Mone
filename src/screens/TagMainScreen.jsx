@@ -143,7 +143,8 @@ const styles = StyleSheet.create({
         position: "absolute",
         bottom: "8%",
         justifyContent:"center",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor:"#ffffff"
     },
     whiteCircle: {
         width: 75,
