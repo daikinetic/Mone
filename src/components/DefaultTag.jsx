@@ -105,7 +105,7 @@ DefaultTag.defaultProps = {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+    
     },
     tagItemPlace:{
         height: 87,

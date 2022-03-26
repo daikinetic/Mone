@@ -118,8 +118,9 @@ const styles = StyleSheet.create({
         height: "90%",
     },
     tagBody: {
-        height: "115%",
+        height: "100%",
         marginTop: "5.7%",
+        paddingBottom: 70
     },
     tagFooter: {
         height: "10%",
