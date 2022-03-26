@@ -111,7 +111,6 @@ export default function TagMainScreen(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#acb3bf',
     },
     tagArea: {
         margin: 1,
@@ -127,7 +126,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         justifyContent:"center",
         shadowColor: "#000000",
-        elevation:50
+        elevation:50,
+        borderTopWidth: 3,
+        borderColor: "rgba(0,0,0,0.05)"
     },
     homeButton: {
         position: "absolute",

@@ -52,7 +52,7 @@ export default function App () {
                     },
                     headerTitleStyle: {
                         color: "#ffffff",
-                        fontSize: 24,
+                        fontSize: 22,
                         textAlign: "center",
                     },
                     headerTitleAlign: "center",

@@ -76,7 +76,7 @@ export default function DefaultTag(props) {
                     style={styles.plusBotton}
                     onPress={() => { deleteMemo(item.id); }}
                 >
-                    <Feather name="plus" size={40} color="white" />
+                    <Feather name="plus" size={38} color="#a9a9a9" />
                 </TouchableOpacity>
             </View>
         );
@@ -113,11 +113,11 @@ const styles = StyleSheet.create({
     },
     tagItem: {
         flexDirection: "row",
-        height: "69%",
+        height: "68%",
         marginRight: "5.5%",
         paddingLeft: 10,
         paddingRight: 15,
-        borderWidth: 2.3,
+        borderWidth: 2,
         borderRadius: 20,
         borderColor: "#EC1A66",
         backgroundColor: "#ffffff",
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     },
     tagTimeText: {
         color: "#EC1A66",
-        fontSize: 23,
+        fontSize: 22,
         fontWeight: "bold",
         lineHeight: 32
     },
@@ -154,9 +154,9 @@ const styles = StyleSheet.create({
     },
     tagMinText: {
         color: "#ec1a66",
-        fontSize: 17.5,
+        fontSize: 17,
         fontWeight: "bold",
-        lineHeight: 18
+        lineHeight: 16
     },
     triangle: {
         position: "absolute",
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     },
     plusBotton: {
         position: "absolute",
-        bottom: -4,
-        right:-13
+        bottom: -2.5,
+        right:-12
     },
 })
