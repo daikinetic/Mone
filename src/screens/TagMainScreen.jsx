@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
         height: "12%",
         backgroundColor: "#EC1A66",
         justifyContent:"center",
+        shadowColor: "#000000",
     },
     homeButton: {
         position: "absolute",
