@@ -111,7 +111,6 @@ export default function TagMainScreen(props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffffff',
     },
     tagArea: {
         margin: 1,

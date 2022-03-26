@@ -86,7 +86,7 @@ const styles = StyleSheet.create ({
         
     },
     tagTimeAllMinText: {
-        color: "#ec1a66",
+        color: "#ffffff",
         fontSize: 17,
         fontWeight: "bold",
         textAlign: 'right',
