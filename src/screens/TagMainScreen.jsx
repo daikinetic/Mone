@@ -77,7 +77,7 @@ export default function TagMainScreen(props) {
                 />
             </View>
             <ResumeButton
-                onPress= { () => { navigation.navigate("TimerSampleScreen", {id: id}); }}
+                onPress= { () => { navigation.navigate("TimerSampleScreen", {id: id, Memos: memos}); }}
             />
         </View>
     );

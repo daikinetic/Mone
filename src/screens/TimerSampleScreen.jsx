@@ -10,6 +10,7 @@ import { Entypo } from '@expo/vector-icons';
 
 // import SliderComponent from '../components/SliderComponent';
 import TaskTag from '../components/TaskTag';
+import MidMargin from '../components/MidMargin';
 
 export default function TimerSampleScreen(props) {
   const { navigation, route } = props;
@@ -18,8 +19,6 @@ export default function TimerSampleScreen(props) {
   const [icon, setIcon] = useState('controller-paus');
   const [memos, setMemos] = useState([]);
   const [numerator, setNumerator] = useState(1);
-  const [title, setTitle] = useState('');
-  // const denominator = 10;
 
   const intervalRef = useRef(null);
   const start = () => {
@@ -38,7 +37,7 @@ export default function TimerSampleScreen(props) {
     intervalRef.current = null;
   }
   const reset = () => {
-    setCount(0);
+    setCount(290);
   }
   // console.log(count);
 
@@ -55,7 +54,7 @@ export default function TimerSampleScreen(props) {
       unsubscribe = ref.onSnapshot((snapshot) => {
         const userMemos = [];
         snapshot.forEach((doc) => {
-          console.log(doc.id, doc.data());
+          // console.log(doc.id, doc.data());
           const data = doc.data();
           userMemos.push({
             MemoId: doc.id,
@@ -71,18 +70,45 @@ export default function TimerSampleScreen(props) {
     return unsubscribe;
   }, []);
 
-  if (count >= 100) {
-    if (numerator === memos.length) {
-      navigation.goBack();
+  let taskList = [];
+  memos.forEach((doc) => {
+      taskList.push(doc.Time)
+  });
+
+  // if (taskList[0] > 0) {
+  //   console.log('taskList='+taskList[0]);
+  // }
+
+  if (taskList[0] > 0) {
+    for (let i = 0; i < memos.length; i++) {
+      if (i+1 === numerator && count >= taskList[i]*60) {
+        if (numerator === memos.length) {
+          navigation.navigate("TagMainScreen");
+        }
+        setNumerator(c => c + 1);
+        reset();
+      }
     }
-    setNumerator(c => c + 1);
-    reset();
   }
+
+  // if (taskList[0] > 0 && count >= taskList[numerator]*60) {
+  //   // if (numerator === memos.length) {
+  //   //   navigation.goBack();
+  //   // }
+  //   console.log(taskList[numerator]);
+  //   setNumerator(c => c + 1);
+  //   reset();
+  // }
 
   return (
     <View style={styles.container}>
       <View style={styles.topMargin}></View>
-      <View style={styles.midMargin(count, memos[0].Time)}></View>
+      {/* <View style={styles.midMargin(count, taskList[0])}></View> */}
+      <MidMargin
+        memos={memos}
+        index={numerator-1}
+        count={count}
+      />
       <ImageBackground source={require('../static/Rectangle.png')} style={styles.image}>
       </ImageBackground>
       <TaskTag
@@ -147,6 +173,9 @@ export default function TimerSampleScreen(props) {
           </TouchableOpacity>
         </View>
       </View>
+      <View style={styles.leftBatContainer}>
+
+      </View>
       <View style={styles.barContainer}>
         <View style={styles.barHeader}>
           <FontAwesome5 name="flag-checkered" size={24} color="#EC1A66" />
@@ -183,12 +212,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  midMargin: (count, time) => ({
-    backgroundColor: '#ffffff',
-    zIndex: 10,
-    height: 500*(1-count/(time*60)),
-    // height: `${80*(1-count*0.01)-2}%`,
-  }),
+  // midMargin: (count, time) => ({
+  //   backgroundColor: '#ffffff',
+  //   zIndex: 10,
+  //   height: 500*(1-count/(time*60)),
+  //   // height: `${80*(1-count*0.01)-2}%`,
+  // }),
   image: {
     position: 'absolute',
     width: '100%',
@@ -255,7 +284,7 @@ const styles = StyleSheet.create({
   barContainer: {
     position: 'absolute',
     zIndex: 15,
-    left: '4%',
+    right: '4%',
     top: 30,
     height: 540,
     width: 50,
