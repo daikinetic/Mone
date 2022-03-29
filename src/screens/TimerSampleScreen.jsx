@@ -11,7 +11,9 @@ import { Entypo } from '@expo/vector-icons';
 // import SliderComponent from '../components/SliderComponent';
 import TaskTag from '../components/TaskTag';
 
-export default function TimerSampleScreen() {
+export default function TimerSampleScreen(props) {
+  const { navigation, route } = props;
+  const { id } = route.params;
   const [count, setCount] = useState(0);
   const [icon, setIcon] = useState('controller-paus');
   const [memos, setMemos] = useState([]);
@@ -39,10 +41,6 @@ export default function TimerSampleScreen() {
     setCount(0);
   }
   // console.log(count);
-  if (count >= 100) {
-    setNumerator(c => c + 1);
-    reset();
-  }
 
   useEffect(() => {
     start();
@@ -53,17 +51,16 @@ export default function TimerSampleScreen() {
     const { currentUser } = firebase.auth();
     let unsubscribe = () => {};
     if (currentUser) {
-      const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'asc');
+      const ref = db.collection(`users/${currentUser.uid}/headers/${id}/memos`).orderBy('createdAt', 'asc');
       unsubscribe = ref.onSnapshot((snapshot) => {
         const userMemos = [];
         snapshot.forEach((doc) => {
           console.log(doc.id, doc.data());
           const data = doc.data();
           userMemos.push({
-            id: doc.id,
+            MemoId: doc.id,
             Title: data.Title,
             Time: data.Time,
-            updatedAt: data.updatedAt.toDate(),
           });
         });
         setMemos(userMemos);
@@ -71,18 +68,26 @@ export default function TimerSampleScreen() {
         Alert.alert('データの読み込みに失敗しました。');
       });
     }
-    return unsubscribe; //memos = [{id: title: time: updatedAt: }, {}, {}, {}]
+    return unsubscribe;
   }, []);
+
+  if (count >= 100) {
+    if (numerator === memos.length) {
+      navigation.goBack();
+    }
+    setNumerator(c => c + 1);
+    reset();
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.topMargin}></View>
-      <View style={styles.midMargin(count)}></View>
+      <View style={styles.midMargin(count, memos[0].Time)}></View>
       <ImageBackground source={require('../static/Rectangle.png')} style={styles.image}>
       </ImageBackground>
       <TaskTag
         memos={memos}
-        index={numerator}
+        index={numerator-1}
       />
       {/* <View style={styles.tag}>
         <Text style={styles.tagTitle}>歯磨き</Text>
@@ -107,6 +112,8 @@ export default function TimerSampleScreen() {
                 setNumerator(c => c - 1);
                 reset();
                 start();
+              } else {
+                navigation.goBack();
               }
             }}
           >
@@ -131,6 +138,8 @@ export default function TimerSampleScreen() {
                 setNumerator(c => c + 1);
                 reset();
                 start();
+              } else {
+                navigation.goBack();
               }
             }}
           >
@@ -171,11 +180,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     height: 70,
     zIndex: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  midMargin: (count) => ({
+  midMargin: (count, time) => ({
     backgroundColor: '#ffffff',
     zIndex: 10,
-    height: 500*(1-count*0.01),
+    height: 500*(1-count/(time*60)),
     // height: `${80*(1-count*0.01)-2}%`,
   }),
   image: {

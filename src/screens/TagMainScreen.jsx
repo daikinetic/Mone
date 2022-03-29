@@ -8,10 +8,10 @@ import HomeButton from "../components/HomeButton";
 import EditButton from "../components/EditButton";
 import ResumeButton from "../components/ResumeButton";
 
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-import { AntDesign } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function TagMainScreen(props) {
     const { style, onPress, navigation, route } = props;
@@ -22,10 +22,10 @@ export default function TagMainScreen(props) {
         const db = firebase.firestore();
         const { currentUser } = firebase.auth();
         let unsubscribe = () => {};
-        // let timeAll = 0; 
+        // let timeAll = 0;
         if (currentUser) {
             const ref = db.collection(`users/${currentUser.uid}/headers/${id}/memos`).orderBy('createdAt', 'asc')
-            
+
             unsubscribe = ref.onSnapshot (( snapshot ) => {
                 const userMemos = [];
                 snapshot.forEach((doc) => {
@@ -38,7 +38,7 @@ export default function TagMainScreen(props) {
                     });
                 });
                 /* timeAllConst = userMemos[0].Time;
-                
+
                 memoData.forEach((doc) => {
                     timeAll += Number(doc.Time);
                 });
@@ -55,14 +55,14 @@ export default function TagMainScreen(props) {
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
-                <TagHeader 
+                <TagHeader
                     headers={headers}
                     id={id}
                     memos={memos}
                     //timeAll={timeAllConst}
                 />
-                <View style={styles.tagBody}>   
-                    <DefaultTag 
+                <View style={styles.tagBody}>
+                    <DefaultTag
                         memos={memos}
                         headerId={id}
                     />
@@ -72,12 +72,12 @@ export default function TagMainScreen(props) {
                 <HomeButton
                     onPress={() => { navigation.navigate("HomeScreen");} }
                 />
-                <EditButton 
+                <EditButton
                     onPress={() => { navigation.navigate("TagMakingScreen", {id: id}); }}
                 />
             </View>
             <ResumeButton
-                onPress= { () => { navigation.navigate("TimerSampleScreen"); }} 
+                onPress= { () => { navigation.navigate("TimerSampleScreen", {id: id}); }}
             />
         </View>
     );

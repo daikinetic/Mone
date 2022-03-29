@@ -9,7 +9,7 @@ export default function TaskTag (props) {
     });
     return (
         <View style={styles.tag}>
-            <Text style={styles.tagTitle}>{taskList[index-1]}</Text>
+            <Text style={styles.tagTitle}>{taskList[index]}</Text>
         </View>
     );
 }
