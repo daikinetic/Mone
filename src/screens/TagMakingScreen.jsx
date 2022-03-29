@@ -10,7 +10,8 @@ import { Feather } from '@expo/vector-icons';
 import { useEffect } from "react/cjs/react.production.min";
 
 export default function TagMakingScreen ( props ) {
-    const { navigation } = props;
+    const { navigation, route } = props;
+    const { id } = route.params;
     const [title, setTitle] = useState('');
     const [time, setTime] = useState('');
 
@@ -18,11 +19,11 @@ export default function TagMakingScreen ( props ) {
         const { currentUser } = firebase.auth();
         if (currentUser) {
             const db = firebase.firestore ();
-            const ref = db.collection(`users/${currentUser.uid}/memos`);
+            const ref = db.collection(`users/${currentUser.uid}/headers/${id}/memos`);
             ref.add({
                 Title: title,
                 Time: time,
-                updatedAt: new Date(),
+                createdAt: new Date(),
             })
                 .then(() => {
                     navigation.navigate("TagMainScreen");

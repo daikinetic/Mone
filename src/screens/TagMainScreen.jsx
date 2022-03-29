@@ -14,11 +14,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons'; 
 
 export default function TagMainScreen(props) {
-    const { style, onPress, navigation } = props;
+    const { style, onPress, navigation, route } = props;
+    const { id, headers } = route.params;
     const [memos, setMemos] = useState ([]);
-    const [headers, setHeaders] = useState ([]);
-    // let memoData = 0;
-    // let timeAllConst = 0;
 
     useEffect(() => {
         const db = firebase.firestore();
@@ -26,7 +24,7 @@ export default function TagMainScreen(props) {
         let unsubscribe = () => {};
         // let timeAll = 0; 
         if (currentUser) {
-            const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'asc')
+            const ref = db.collection(`users/${currentUser.uid}/headers/${id}/memos`).orderBy('createdAt', 'asc')
             
             unsubscribe = ref.onSnapshot (( snapshot ) => {
                 const userMemos = [];
@@ -54,41 +52,20 @@ export default function TagMainScreen(props) {
         return unsubscribe;
     }, []);
 
-    useEffect(() => {
-        const db = firebase.firestore();
-        const { currentUser } = firebase.auth();
-        let unsubscribe = () => {};
-        if (currentUser) {
-            const ref = db.collection(`users/${currentUser.uid}/headers`)
-
-            unsubscribe = ref.onSnapshot(( snapshot ) => {
-                const userHeaders = [];
-                snapshot.forEach((doc) => {
-                    console.log(doc.id, doc.data());
-                    const data = doc.data();
-                    userHeaders.push({
-                        Header: data.Header,
-                    });
-                });
-                setHeaders(userHeaders);
-            }, (error) => {
-                console.log(error);
-                Alert.alert('データの読み込みに失敗しました。');
-            });
-        }
-        return unsubscribe;
-    }, []);
-
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
                 <TagHeader 
                     headers={headers}
+                    id={id}
                     memos={memos}
                     //timeAll={timeAllConst}
                 />
                 <View style={styles.tagBody}>   
-                    <DefaultTag memos={memos} />
+                    <DefaultTag 
+                        memos={memos}
+                        headerId={id}
+                    />
                 </View>
             </View>
             <View style={styles.tagFooter}>
@@ -96,7 +73,7 @@ export default function TagMainScreen(props) {
                     onPress={() => { navigation.navigate("HomeScreen");} }
                 />
                 <EditButton 
-                    onPress={() => { navigation.navigate("TagMakingScreen"); }}
+                    onPress={() => { navigation.navigate("TagMakingScreen", {id: id}); }}
                 />
             </View>
             <ResumeButton
@@ -115,7 +92,7 @@ const styles = StyleSheet.create({
     tagArea: {
         margin: 1,
         padding: "4.5%",
-        height: "90%",
+        height: "91.5%",
     },
     tagBody: {
         height: "100%",
@@ -123,7 +100,7 @@ const styles = StyleSheet.create({
         paddingBottom: 70
     },
     tagFooter: {
-        height: "10%",
+        height: "8.5%",
         backgroundColor: "#ffffff",
         justifyContent:"center",
         shadowColor: "#000000",

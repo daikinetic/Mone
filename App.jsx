@@ -23,6 +23,8 @@ import TimerSampleScreen from "./src/screens/TimerSampleScreen";
 import TagEditSubScreen from "./src/screens/TagEditSubScreen";
 import TagTitleEditScreen from "./src/screens/TagTitleEditScreen";
 import TagMakingScreen from "./src/screens/TagMakingScreen";
+import RoutineTagScreen from "./src/screens/RoutineTagScreen";
+import RoutineTagMakingScreen from "./src/screens/RoutineTagMakingScreen";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA7dk0v-m25r9tX8AYQL9PxJik7LNtaJao",
@@ -61,7 +63,11 @@ export default function App () {
                     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
                 }}
             >
-                <Stack.Screen name="TagMainScreen" component={TagMainScreen} />
+                <Stack.Screen
+                    name="TagMainScreen"
+                    component={TagMainScreen}
+                    options={{ headerShown: false }}
+                />
                 <Stack.Screen name="TagEditScreen" component={TagEditScreen} />
                 <Stack.Screen name="TagOptionScreen" component={TagOptionScreen} />
                 <Stack.Screen name="TagPastScreen" component={TagPastScreen} />
@@ -93,6 +99,12 @@ export default function App () {
                 <Stack.Screen name="TagEditSubScreen" component={TagEditSubScreen} />
                 <Stack.Screen name="TagTitleEditScreen" component={TagTitleEditScreen} />
                 <Stack.Screen name="TagMakingScreen" component={TagMakingScreen} />
+                <Stack.Screen 
+                    name="RoutineTagScreen" 
+                    component={RoutineTagScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen name="RoutineTagMakingScreen" component={RoutineTagMakingScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );

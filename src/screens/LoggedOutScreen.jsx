@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   logoText: {
     fontSize: 48,
     lineHeight: 54,
-    color: "#000000"
+    color: "#ec1a66"
   },
   footer: {
     flex: 1,
