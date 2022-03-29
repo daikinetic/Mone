@@ -53,7 +53,7 @@ export default function HomeScreen(props) {
         <TouchableOpacity
           style={styles.button2}
           onPress={() => {
-            navigation.navigate('TagMainScreen');
+            navigation.navigate('RoutineTagScreen');
           }}
         >
           <Entypo style={styles.plus} name="plus" size={50} color="#EC1A66" />

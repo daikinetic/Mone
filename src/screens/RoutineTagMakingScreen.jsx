@@ -1,29 +1,24 @@
-import React, { useState } from "react";
-import {
-    View, StyleSheet, Text, TextInput, ScrollView, TouchableOpacity, Alert
-} from "react-native";
-import { shape, string } from "prop-types";
-import firebase from 'firebase';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, TextInput, TouchableOpacity, Alert } from "react-native";
+import firebase from "firebase";
 
-import { Entypo } from '@expo/vector-icons'; 
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons';
 
-export default function TagTitleEditScreen ( props ) {
-    const { navigation, route /* id: TagMainのヘッダーから受け取る */ } = props;
-    const { id, headers } = route.params;
-
-    const [ header, setHeader ] = useState(headers);
+export default function RoutineTagMakingScreen (props) {
+    const { navigation } = props;
+    const [ header, setHeader ] = useState([]);
 
     function hundlePress () {
         const { currentUser } = firebase.auth();
         if (currentUser) {
             const db = firebase.firestore ();
-            const ref = db.collection(`users/${currentUser.uid}/headers`).doc(id);
-            ref.set({
+            const ref = db.collection(`users/${currentUser.uid}/headers`);
+            ref.add({
                 Header: header,
-            },{ merge:true })
+                createdAt: new Date(),
+            })
                 .then(() => {
-                    navigation.navigate("TagMainScreen");
+                    navigation.navigate("RoutineTagScreen");
                 })
                 .catch((error) => {
                     Alert.alert(error.code);

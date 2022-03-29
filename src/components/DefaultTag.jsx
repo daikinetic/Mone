@@ -14,14 +14,14 @@ import { Feather } from '@expo/vector-icons';
 
 
 export default function DefaultTag(props) {
-    const { onPress, memos } = props;
+    const { onPress, memos, headerId} = props;
     const navigation = useNavigation();
 
     function deleteMemo(id) {
         const { currentUser } = firebase.auth(); 
         if (currentUser) {
             const db = firebase.firestore();
-            const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
+            const ref = db.collection(`users/${currentUser.uid}/headers/${headerId}/memos`).doc(id);
             Alert.alert('メモを削除します', 'よろしいですか？', [
                 {
                     text: 'キャンセル',
@@ -47,7 +47,7 @@ export default function DefaultTag(props) {
             >
                 <TouchableOpacity
                     style={styles.tagItem}
-                    onPress={() => { navigation.navigate('TagEditSubScreen', { id: item.id, titleText: item.Title, timeText: item.Time }); }}
+                    onPress={() => { navigation.navigate('TagEditSubScreen', { headerId: headerId, id: item.id, titleText: item.Title, timeText: item.Time }); }}
                 >
                     <View style={styles.tagTitle}>
                         <TextInput 

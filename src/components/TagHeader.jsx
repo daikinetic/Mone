@@ -4,28 +4,30 @@ import { useNavigation } from '@react-navigation/native';
 import firebase from 'firebase';
 
 export default function TagHeader( props ) {
-    const { onPress, headers, memos } = props;
+    const { onPress, headers, memos, id } = props;
     const navigation = useNavigation();
     const [header, setHeader] = useState('');
     let timeAll = 0;
-    let theme = '';
+    // let theme = '';
     memos.forEach((doc) => {
         timeAll += Number(doc.Time);
     });
+    /*
     headers.forEach((doc) => {
         theme = doc.Header;
     });
+    */
 
     return (
 
         <TouchableOpacity
             style={styles.tagHeader}
-            onPress={() => { navigation.navigate('TagTitleEditScreen', { id: headers.id }); }}
+            onPress={() => { navigation.navigate('TagTitleEditScreen', { id: id, headers:headers }); }}
         >
             <View style={styles.tagTheme}>
                 <TextInput
                     style={styles.themeText}
-                    value={theme}
+                    value={headers}
                     onChangeText={(text) => { setHeader(text); }}
                     placeholder="▶ Routine Name"
                 />

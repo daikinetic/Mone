@@ -11,7 +11,7 @@ import { useEffect } from "react/cjs/react.production.min";
 
 export default function TagEditSubScreen ( props ) {
     const { navigation, route } = props;
-    const { id, titleText, timeText } = route.params;
+    const { headerId, id, titleText, timeText } = route.params;
     const [title, setTitle] = useState(titleText);
     const [time, setTime] = useState(timeText);
 
@@ -19,7 +19,7 @@ export default function TagEditSubScreen ( props ) {
         const { currentUser } = firebase.auth();
         if (currentUser) {
             const db = firebase.firestore ();
-            const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
+            const ref = db.collection(`users/${currentUser.uid}/headers/${headerId}/memos`).doc(id);
             ref.set({
                 Title: title,
                 Time: time,
