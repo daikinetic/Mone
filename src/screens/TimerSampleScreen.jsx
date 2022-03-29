@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity, ImageBackground, Alert,
 } from 'react-native';
-import Slider from '@react-native-community/slider';
+// import Slider from '@react-native-community/slider';
 import firebase from 'firebase';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -37,9 +37,8 @@ export default function TimerSampleScreen(props) {
     intervalRef.current = null;
   }
   const reset = () => {
-    setCount(290);
+    setCount(250);
   }
-  // console.log(count);
 
   useEffect(() => {
     start();
@@ -75,34 +74,27 @@ export default function TimerSampleScreen(props) {
       taskList.push(doc.Time)
   });
 
-  // if (taskList[0] > 0) {
-  //   console.log('taskList='+taskList[0]);
-  // }
-
   if (taskList[0] > 0) {
-    for (let i = 0; i < memos.length; i++) {
+    for (let i = 0; i < memos.length-1; i++) {
       if (i+1 === numerator && count >= taskList[i]*60) {
-        if (numerator === memos.length) {
-          navigation.navigate("TagMainScreen");
-        }
         setNumerator(c => c + 1);
         reset();
       }
     }
   }
 
-  // if (taskList[0] > 0 && count >= taskList[numerator]*60) {
-  //   // if (numerator === memos.length) {
-  //   //   navigation.goBack();
-  //   // }
-  //   console.log(taskList[numerator]);
-  //   setNumerator(c => c + 1);
-  //   reset();
-  // }
+  if (taskList[0] > 0) {
+    if (numerator === memos.length && count >= taskList[memos.length-1]*60) {
+      stop();
+      navigation.navigate('TagMainScreen');
+    }
+  }
 
   return (
     <View style={styles.container}>
-      <View style={styles.topMargin}></View>
+      <View style={styles.topMargin}>
+        <Text style={styles.min}>{taskList[numerator-1]} min</Text>
+      </View>
       {/* <View style={styles.midMargin(count, taskList[0])}></View> */}
       <MidMargin
         memos={memos}
@@ -173,9 +165,7 @@ export default function TimerSampleScreen(props) {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.leftBatContainer}>
-
-      </View>
+      <View style={styles.leftBar}></View>
       <View style={styles.barContainer}>
         <View style={styles.barHeader}>
           <FontAwesome5 name="flag-checkered" size={24} color="#EC1A66" />
@@ -186,7 +176,7 @@ export default function TimerSampleScreen(props) {
           <View style={styles.minTrack(numerator, memos.length)}></View>
         </View>
       </View>
-      <Slider
+      {/* <Slider
         style={styles.slider}
         minimumValue={0}
         maximumValue={100}
@@ -195,7 +185,7 @@ export default function TimerSampleScreen(props) {
         thumbTintColor='#EC1A66'
         value={count}
         onValueChange={(value) => {setCount(value);}}
-      />
+      /> */}
     </View>
   );
 }
@@ -209,8 +199,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     height: 70,
     zIndex: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+  },
+  min: {
+    color: '#EC1A66',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginLeft: 10,
   },
   // midMargin: (count, time) => ({
   //   backgroundColor: '#ffffff',
@@ -280,6 +276,16 @@ const styles = StyleSheet.create({
   resetButton: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     height: 30,
+  },
+  leftBar: {
+    position: 'absolute',
+    zIndex: 15,
+    backgroundColor: '#EC1A66',
+    left: '11%',
+    top: 70,
+    height: 500,
+    width: 3,
+    borderRadius: 2,
   },
   barContainer: {
     position: 'absolute',

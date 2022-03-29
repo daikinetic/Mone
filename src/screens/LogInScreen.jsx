@@ -27,7 +27,7 @@ export default function LogInScreen(props) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const { user } = userCredential;
-        console.log(user.uid);
+        // console.log(user.uid);
         navigation.reset({
           index: 0,
           routes: [{ name: 'HomeScreen' }],

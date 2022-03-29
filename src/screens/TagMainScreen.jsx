@@ -29,7 +29,7 @@ export default function TagMainScreen(props) {
             unsubscribe = ref.onSnapshot (( snapshot ) => {
                 const userMemos = [];
                 snapshot.forEach((doc) => {
-                    console.log(doc.id, doc.data());
+                    // console.log(doc.id, doc.data());
                     const data = doc.data();
                     userMemos.push({
                         id: doc.id,
@@ -45,7 +45,7 @@ export default function TagMainScreen(props) {
                 */
                 setMemos(userMemos);
             }, (error) => {
-                console.log(error);
+                // console.log(error);
                 Alert.alert('データの読み込みに失敗しました。');
             });
         }

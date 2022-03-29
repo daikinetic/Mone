@@ -12,9 +12,7 @@ export default function MidMargin (props) {
       height = 500*(1-count/(taskList[index]*60));
   }
   return (
-    <View style={styles.midMargin(height)}>
-        {/* <Text>{taskList[index]} min</Text> */}
-    </View>
+    <View style={styles.midMargin(height)}></View>
   );
 }
 
