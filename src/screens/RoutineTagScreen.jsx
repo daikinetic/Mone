@@ -9,8 +9,7 @@ import firebase from 'firebase';
 import HomeButton from '../components/HomeButton';
 //Making に飛ばす用のボタンコンポネント
 import EditButton from '../components/EditButton';
-//import FlatList を返すコンポネント (消去用のボタン含む)
-//import DefaultRoutineTag from '';
+//FlatList を返すコンポネント (消去用のボタン含む)
 import DefaultRoutineTag from '../components/DefaultRoutineTag';
 
 import { Feather } from '@expo/vector-icons';
@@ -73,29 +72,13 @@ const styles= StyleSheet.create({
     },
     routineTagArea: {
         margin: 1,
-        padding: "4.5%",
-        paddingVertical: "6%",
+        paddingVertical: "7.5%",
+        paddingBottom: 0,
         height: "91.5%",
     },
     routineTagPlace: {
         height: 95,
         width: "97.5%",
-    },
-    routineTag: {
-        borderWidth: 1,
-        borderRadius: 20,
-        padding:0,
-        borderColor: '#ffffff',
-        backgroundColor: '#EC1A66',
-        alignItems: "center",
-        justifyContent: "center",
-        width: "90%",
-        height: "73%",
-    },
-    routineTagText:{
-        color: '#ffffff',
-        fontSize: 16.5,
-        fontWeight: "bold",
     },
     plusButton: {
         position: "absolute",

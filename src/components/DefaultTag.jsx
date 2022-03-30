@@ -76,7 +76,7 @@ export default function DefaultTag(props) {
                     style={styles.plusBotton}
                     onPress={() => { deleteMemo(item.id); }}
                 >
-                    <Feather name="plus" size={38} color="#a9a9a9" />
+                    <Feather name="x" size={34} color="#a9a9a9" />
                 </TouchableOpacity>
             </View>
         );
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     },
     plusBotton: {
         position: "absolute",
-        bottom: -2.5,
+        bottom: 0,
         right:-12
     },
 })

@@ -30,7 +30,7 @@ export default function RegisterStep1Screen(props) {
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
-        <Text style={styles.back}>↰</Text>
+        <Text style={styles.back}></Text>
         <Text style={styles.title}>Register</Text>
         <TextInput
           style={styles.input}

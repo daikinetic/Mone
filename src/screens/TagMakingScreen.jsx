@@ -112,6 +112,8 @@ const styles = StyleSheet.create ({
     tagTimes: {
         width:"15.5%",
         height: "86%",
+        flexDirection: "row",
+        alignItems: 'center',
     },
     tagTime: {
         width:"73%",
@@ -126,7 +128,8 @@ const styles = StyleSheet.create ({
         lineHeight: 32
     },
     tagMin: {
-        alignItems:"flex-end"
+        alignItems:"flex-end",
+        marginTop: 5,
     },
     tagMinText: {
         color: "#ec1a66",
