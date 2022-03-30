@@ -38,7 +38,7 @@ export default function TimerSampleScreen(props) {
     intervalRef.current = null;
   }
   const reset = () => {
-    setCount(250);
+    setCount(0);
   }
 
   useEffect(() => {
@@ -205,9 +205,10 @@ const styles = StyleSheet.create({
   },
   min: {
     color: '#EC1A66',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginLeft: 10,
+    marginLeft: 15,
+    marginBottom: 5
   },
   // midMargin: (count, time) => ({
   //   backgroundColor: '#ffffff',

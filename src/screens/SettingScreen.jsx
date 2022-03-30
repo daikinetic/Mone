@@ -15,11 +15,11 @@ export default function SettingScreen(props) {
     <View style={styles.container}>
       {/* <AppBar name="gear" /> */}
       <View style={styles.logoContainer}>
-        <Text style={styles.logo}>□</Text>
+        <Entypo style={styles.logo} name="hour-glass" size={30} color="#02B3DE" />
         <Text style={styles.mone}>mone</Text>
       </View>
       <View style={styles.button12}>
-        <TouchableOpacity style={styles.button1} onPress={() => { navigation.navigate('SettingTimeScreen'); }}>
+        <TouchableOpacity style={styles.button1} /*onPress={() => { navigation.navigate('SettingTimeScreen'); }}*/>
           <Ionicons style={styles.time} name="timer-outline" size={50} color="white" />
           <Text style={styles.button1Text}>Time Alert</Text>
         </TouchableOpacity>
@@ -50,6 +50,9 @@ export default function SettingScreen(props) {
           <View style={styles.footLine}></View>
         </View>
       </View>
+      <View style={styles.cover}>
+        <Text style={styles.coverText}>Coming Soon !!</Text>
+      </View>
     </View>
   );
 }
@@ -61,18 +64,18 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     flexDirection: 'row',
-    marginVertical: 20,
+    marginVertical: 35,
+    marginTop:45,
     justifyContent: 'center',
     height: 60,
   },
   logo: {
-    fontSize: 48,
-    lineHeight: 54,
+    lineHeight: 48,
     paddingRight: 10,
   },
   mone: {
-    fontSize: 48,
-    lineHeight: 54,
+    fontSize: 40,
+    lineHeight: 46,
   },
   button12: {
     flexDirection: 'row',
@@ -170,6 +173,21 @@ const styles = StyleSheet.create({
     width: 135,
     height: 5,
     borderRadius: 10,
+  },
+  cover: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.40)',
+    alignItems: 'center',
+    // justifyContent: 'center',
+  },
+  coverText: {
+    color: '#ffffff',
+    fontSize: 24,
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    top: '40%',
   },
 });
 
