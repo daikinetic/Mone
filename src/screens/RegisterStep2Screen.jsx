@@ -18,14 +18,14 @@ export default function RegisterStep2Screen(props) {
       Username: username,
     })
       .then((docRef) => {
-        console.log('Created!', docRef.id);
+        // console.log('Created!', docRef.id);
         navigation.reset({
           index: 0,
           routes: [{ name: 'HomeScreen' }],
         });
       })
       .catch((error) => {
-        console.log('Error!', error);
+        // console.log('Error!', error);
         Alert.alert(error.code);
       });
   }
