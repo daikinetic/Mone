@@ -15,14 +15,14 @@ export default function RegisterStep1Screen(props) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const { user } = userCredential;
-        console.log(user.uid);
+        // console.log(user.uid);
         navigation.reset({
           index: 0,
           routes: [{ name: 'RegisterStep2Screen' }],
         });
       })
       .catch((error) => {
-        console.log(error.code, error.message);
+        // console.log(error.code, error.message);
         Alert.alert(error.code);
       });
   }
@@ -30,7 +30,7 @@ export default function RegisterStep1Screen(props) {
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
-        <Text style={styles.back}>↰</Text>
+        <Text style={styles.back}></Text>
         <Text style={styles.title}>Register</Text>
         <TextInput
           style={styles.input}

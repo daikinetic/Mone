@@ -8,28 +8,35 @@ import HomeButton from "../components/HomeButton";
 import EditButton from "../components/EditButton";
 import ResumeButton from "../components/ResumeButton";
 
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-import { AntDesign } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function TagMainScreen(props) {
     const { style, onPress, navigation, route } = props;
     const { id, headers } = route.params;
     const [memos, setMemos] = useState ([]);
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+      
+    async function sleepTime(ms) {
+        await sleep(ms);
+        return ms;
+    }
 
-    useEffect(() => {
-        const db = firebase.firestore();
-        const { currentUser } = firebase.auth();
+    useEffect( () => {  
+        const  db = firebase.firestore();
+        const { currentUser } =  firebase.auth();
         let unsubscribe = () => {};
-        // let timeAll = 0; 
+        // let timeAll = 0;
         if (currentUser) {
             const ref = db.collection(`users/${currentUser.uid}/headers/${id}/memos`).orderBy('createdAt', 'asc')
-            
             unsubscribe = ref.onSnapshot (( snapshot ) => {
                 const userMemos = [];
                 snapshot.forEach((doc) => {
-                    console.log(doc.id, doc.data());
+                    // console.log(doc.id, doc.data());
                     const data = doc.data();
                     userMemos.push({
                         id: doc.id,
@@ -38,14 +45,15 @@ export default function TagMainScreen(props) {
                     });
                 });
                 /* timeAllConst = userMemos[0].Time;
-                
+
                 memoData.forEach((doc) => {
                     timeAll += Number(doc.Time);
                 });
                 */
                 setMemos(userMemos);
+
             }, (error) => {
-                console.log(error);
+                // console.log(error);
                 Alert.alert('データの読み込みに失敗しました。');
             });
         }
@@ -55,14 +63,14 @@ export default function TagMainScreen(props) {
     return (
         <View style={styles.container}>
             <View style={styles.tagArea}>
-                <TagHeader 
+                <TagHeader
                     headers={headers}
                     id={id}
                     memos={memos}
                     //timeAll={timeAllConst}
                 />
-                <View style={styles.tagBody}>   
-                    <DefaultTag 
+                <View style={styles.tagBody}>
+                    <DefaultTag
                         memos={memos}
                         headerId={id}
                     />
@@ -72,12 +80,12 @@ export default function TagMainScreen(props) {
                 <HomeButton
                     onPress={() => { navigation.navigate("HomeScreen");} }
                 />
-                <EditButton 
+                <EditButton
                     onPress={() => { navigation.navigate("TagMakingScreen", {id: id}); }}
                 />
             </View>
             <ResumeButton
-                onPress= { () => { navigation.navigate("TimerSampleScreen"); }} 
+                onPress= { () => { navigation.navigate("TimerSampleScreen", {id: id, Memos: memos}); }}
             />
         </View>
     );

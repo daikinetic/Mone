@@ -12,7 +12,6 @@ export default function SettingTimeScreen(props) {
 
   return (
     <View style={styles.container}>
-      <AppBar name="gear"/>
       <View style={styles.imageContainer}>
         <View style={styles.image}>
           <Ionicons style={styles.time} name="timer-outline" size={100} color="#EC1A66" />

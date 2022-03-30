@@ -47,6 +47,7 @@ export default function HomeScreen(props) {
       </View>
       <View style={styles.button12}>
         <TouchableOpacity style={styles.button1}>
+          <View style={styles.button1Cover}></View>
           <FontAwesome style={styles.play} name="play-circle" size={44} color="white" />
           <Text style={styles.button1Text}>Quick Start Preset Project</Text>
         </TouchableOpacity>
@@ -62,6 +63,7 @@ export default function HomeScreen(props) {
       </View>
       <View style={styles.button34}>
         <TouchableOpacity style={styles.button3}>
+          <View style={styles.button3Cover}></View>
           <View style={styles.button3Icon}>
             <FontAwesome style={styles.chart} name="bar-chart" size={34} color="#EC1A66" />
             <AntDesign style={styles.share} name="sharealt" size={34} color="#EC1A66" />
@@ -74,6 +76,7 @@ export default function HomeScreen(props) {
             navigation.navigate('SettingScreen');
           }}
         >
+          <View style={styles.button4Cover}></View>
           <FontAwesome style={styles.gear} name="gear" size={44} color="white" />
           <Text style={styles.button4Text}>Settings</Text>
         </TouchableOpacity>
@@ -85,9 +88,10 @@ export default function HomeScreen(props) {
           </Text>
           <Text style={styles.mone}>mone</Text>
         </View>
+        
         <View style={styles.footLineContainer}>
           <View style={styles.footLine}></View>
-        </View>
+        </View> 
       </View>
     </View>
   );
@@ -121,13 +125,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     height: 150,
   },
+  button1Cover: {
+    position: 'absolute',
+    zIndex: 5,
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.25)',
+    borderRadius: 10,
+  },
   button1: {
     backgroundColor: '#EC1A66',
     width: '46%',
     alignItems: 'center',
     borderRadius: 10,
-    padding:3,
-    paddingTop:5
+    // padding:3,
+    // paddingBottom:5
   },
   play: {
     margin: 17,
@@ -165,6 +177,14 @@ const styles = StyleSheet.create({
     height: 150,
     marginTop: 24,
   },
+  button3Cover: {
+    position: 'absolute',
+    zIndex: 5,
+    height: '102%',
+    width: '102%',
+    backgroundColor: 'rgba(0, 0, 0, 0.25)',
+    borderRadius: 10,
+  },
   button3: {
     backgroundColor: '#ffffff',
     borderColor: '#EC1A66',
@@ -172,7 +192,7 @@ const styles = StyleSheet.create({
     width: '46%',
     alignItems: 'center',
     borderRadius: 10,
-    padding:3
+    /*padding:3 */
   },
   button3Icon: {
     flexDirection: 'row',
@@ -187,12 +207,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     lineHeight: 30,
   },
+  button4Cover: {
+    position: 'absolute',
+    zIndex: 5,
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.25)',
+    borderRadius: 10,
+  },
   button4: {
     backgroundColor: '#EC1A66',
     width: '46%',
     alignItems: 'center',
     borderRadius: 10,
-    padding:3
+    /* padding:3 */
   },
   gear: {
     margin: 7,

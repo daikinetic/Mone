@@ -82,7 +82,7 @@ export default function App () {
                 <Stack.Screen
                     name="SettingScreen"
                     component={SettingScreen}
-                    options={{ headerTitle: () => <FontAwesome name="gear" size={40} color="white" /> }}
+                    options={{ headerTitle: () => <FontAwesome name="gear" size={34} color="white" /> }}
                 />
                 <Stack.Screen name="SettingTimeScreen" component={SettingTimeScreen} />
                 <Stack.Screen

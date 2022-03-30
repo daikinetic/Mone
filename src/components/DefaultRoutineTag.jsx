@@ -53,7 +53,7 @@ export default function DefaultRoutineTag (props) {
                     style={styles.plusButton}
                     onPress={() => { deleteHeader(item.id); }}
                 >
-                    <Feather name="plus" size={38} color="#a9a9a9" />
+                    <Feather name="x" size={36} color="#a9a9a9" />
                 </TouchableOpacity>
             </View>
         );
@@ -80,15 +80,18 @@ const styles = StyleSheet.create({
         height: "91.5%",
     },
     routineTagPlace: {
-        height: 95,
+        height: 90,
         width: "97.5%",
+        paddingHorizontal:"5%",
+        paddingLeft: "6%",
+        marginBottom: 3
     },
     routineTag: {
-        borderWidth: 1,
+        borderWidth: 2,
         borderRadius: 20,
         padding:0,
         borderColor: '#ffffff',
-        backgroundColor: '#EC1A66',
+        backgroundColor: '#ec1a66',
         alignItems: "center",
         justifyContent: "center",
         width: "90%",
@@ -101,8 +104,8 @@ const styles = StyleSheet.create({
     },
     plusButton: {
         position: "absolute",
-        bottom: -2.5,
-        right:-12
+        bottom: 8, 
+        right:5
     },
     routineTagFooter: {
         height: "8.5%",

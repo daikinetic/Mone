@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity, ImageBackground, Alert,
 } from 'react-native';
-import Slider from '@react-native-community/slider';
+// import Slider from '@react-native-community/slider';
 import firebase from 'firebase';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -10,14 +10,16 @@ import { Entypo } from '@expo/vector-icons';
 
 // import SliderComponent from '../components/SliderComponent';
 import TaskTag from '../components/TaskTag';
+import MidMargin from '../components/MidMargin';
 
-export default function TimerSampleScreen() {
+
+export default function TimerSampleScreen(props) {
+  const { navigation, route } = props;
+  const { id } = route.params;
   const [count, setCount] = useState(0);
   const [icon, setIcon] = useState('controller-paus');
   const [memos, setMemos] = useState([]);
   const [numerator, setNumerator] = useState(1);
-  const [title, setTitle] = useState('');
-  // const denominator = 10;
 
   const intervalRef = useRef(null);
   const start = () => {
@@ -38,11 +40,6 @@ export default function TimerSampleScreen() {
   const reset = () => {
     setCount(0);
   }
-  // console.log(count);
-  if (count >= 100) {
-    setNumerator(c => c + 1);
-    reset();
-  }
 
   useEffect(() => {
     start();
@@ -53,17 +50,16 @@ export default function TimerSampleScreen() {
     const { currentUser } = firebase.auth();
     let unsubscribe = () => {};
     if (currentUser) {
-      const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'asc');
+      const ref = db.collection(`users/${currentUser.uid}/headers/${id}/memos`).orderBy('createdAt', 'asc');
       unsubscribe = ref.onSnapshot((snapshot) => {
         const userMemos = [];
         snapshot.forEach((doc) => {
-          console.log(doc.id, doc.data());
+          // console.log(doc.id, doc.data());
           const data = doc.data();
           userMemos.push({
-            id: doc.id,
+            MemoId: doc.id,
             Title: data.Title,
             Time: data.Time,
-            updatedAt: data.updatedAt.toDate(),
           });
         });
         setMemos(userMemos);
@@ -71,18 +67,46 @@ export default function TimerSampleScreen() {
         Alert.alert('データの読み込みに失敗しました。');
       });
     }
-    return unsubscribe; //memos = [{id: title: time: updatedAt: }, {}, {}, {}]
+    return unsubscribe;
   }, []);
+
+  let taskList = [];
+  memos.forEach((doc) => {
+      taskList.push(doc.Time)
+  });
+
+  if (taskList[0] > 0) {
+    for (let i = 0; i < memos.length-1; i++) {
+      if (i+1 === numerator && count >= taskList[i]*60) {
+        setNumerator(c => c + 1);
+        reset();
+      }
+    }
+  }
+
+  if (taskList[0] > 0) {
+    if (numerator === memos.length && count >= taskList[memos.length-1]*60) {
+      stop();
+      navigation.navigate('TagMainScreen');
+    }
+  }
 
   return (
     <View style={styles.container}>
-      <View style={styles.topMargin}></View>
-      <View style={styles.midMargin(count)}></View>
+      <View style={styles.topMargin}>
+        <Text style={styles.min}>{taskList[numerator-1]} min</Text>
+      </View>
+      {/* <View style={styles.midMargin(count, taskList[0])}></View> */}
+      <MidMargin
+        memos={memos}
+        index={numerator-1}
+        count={count}
+      />
       <ImageBackground source={require('../static/Rectangle.png')} style={styles.image}>
       </ImageBackground>
       <TaskTag
         memos={memos}
-        index={numerator}
+        index={numerator-1}
       />
       {/* <View style={styles.tag}>
         <Text style={styles.tagTitle}>歯磨き</Text>
@@ -107,6 +131,8 @@ export default function TimerSampleScreen() {
                 setNumerator(c => c - 1);
                 reset();
                 start();
+              } else {
+                navigation.goBack();
               }
             }}
           >
@@ -131,6 +157,8 @@ export default function TimerSampleScreen() {
                 setNumerator(c => c + 1);
                 reset();
                 start();
+              } else {
+                navigation.goBack();
               }
             }}
           >
@@ -138,6 +166,7 @@ export default function TimerSampleScreen() {
           </TouchableOpacity>
         </View>
       </View>
+      <View style={styles.leftBar}></View>
       <View style={styles.barContainer}>
         <View style={styles.barHeader}>
           <FontAwesome5 name="flag-checkered" size={24} color="#EC1A66" />
@@ -148,7 +177,7 @@ export default function TimerSampleScreen() {
           <View style={styles.minTrack(numerator, memos.length)}></View>
         </View>
       </View>
-      <Slider
+      {/* <Slider
         style={styles.slider}
         minimumValue={0}
         maximumValue={100}
@@ -157,7 +186,7 @@ export default function TimerSampleScreen() {
         thumbTintColor='#EC1A66'
         value={count}
         onValueChange={(value) => {setCount(value);}}
-      />
+      /> */}
     </View>
   );
 }
@@ -171,13 +200,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     height: 70,
     zIndex: 10,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
   },
-  midMargin: (count) => ({
-    backgroundColor: '#ffffff',
-    zIndex: 10,
-    height: 500*(1-count*0.01),
-    // height: `${80*(1-count*0.01)-2}%`,
-  }),
+  min: {
+    color: '#EC1A66',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginLeft: 15,
+    marginBottom: 5
+  },
+  // midMargin: (count, time) => ({
+  //   backgroundColor: '#ffffff',
+  //   zIndex: 10,
+  //   height: 500*(1-count/(time*60)),
+  //   // height: `${80*(1-count*0.01)-2}%`,
+  // }),
   image: {
     position: 'absolute',
     width: '100%',
@@ -241,10 +279,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     height: 30,
   },
+  leftBar: {
+    position: 'absolute',
+    zIndex: 15,
+    backgroundColor: '#EC1A66',
+    left: '11%',
+    top: 70,
+    height: 500,
+    width: 3,
+    borderRadius: 2,
+  },
   barContainer: {
     position: 'absolute',
     zIndex: 15,
-    left: '4%',
+    right: '4%',
     top: 30,
     height: 540,
     width: 50,
