@@ -12,6 +12,8 @@ import { Entypo } from '@expo/vector-icons';
 import TaskTag from '../components/TaskTag';
 
 export default function TimerSampleScreen() {
+  const { params } = props;
+  const { id, Time } = params;
   const [count, setCount] = useState(0);
   const [icon, setIcon] = useState('controller-paus');
   const [memos, setMemos] = useState([]);

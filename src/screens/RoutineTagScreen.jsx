@@ -10,7 +10,6 @@ import HomeButton from '../components/HomeButton';
 //Making に飛ばす用のボタンコンポネント
 import EditButton from '../components/EditButton';
 //import FlatList を返すコンポネント (消去用のボタン含む)
-//import DefaultRoutineTag from '';
 import DefaultRoutineTag from '../components/DefaultRoutineTag';
 
 import { Feather } from '@expo/vector-icons'; 

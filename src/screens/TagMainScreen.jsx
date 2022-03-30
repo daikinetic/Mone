@@ -17,15 +17,22 @@ export default function TagMainScreen(props) {
     const { style, onPress, navigation, route } = props;
     const { id, headers } = route.params;
     const [memos, setMemos] = useState ([]);
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+      
+    async function sleepTime(ms) {
+        await sleep(ms);
+        return ms;
+    }
 
-    useEffect(() => {
-        const db = firebase.firestore();
-        const { currentUser } = firebase.auth();
+    useEffect( () => {  
+        const  db = firebase.firestore();
+        const { currentUser } =  firebase.auth();
         let unsubscribe = () => {};
         // let timeAll = 0; 
         if (currentUser) {
             const ref = db.collection(`users/${currentUser.uid}/headers/${id}/memos`).orderBy('createdAt', 'asc')
-            
             unsubscribe = ref.onSnapshot (( snapshot ) => {
                 const userMemos = [];
                 snapshot.forEach((doc) => {
@@ -44,6 +51,7 @@ export default function TagMainScreen(props) {
                 });
                 */
                 setMemos(userMemos);
+
             }, (error) => {
                 console.log(error);
                 Alert.alert('データの読み込みに失敗しました。');
@@ -77,7 +85,7 @@ export default function TagMainScreen(props) {
                 />
             </View>
             <ResumeButton
-                onPress= { () => { navigation.navigate("TimerSampleScreen"); }} 
+                onPress= { () => { navigation.navigate("TimerSampleScreen"), {id: id, Time: memos.Time}; }} 
             />
         </View>
     );
