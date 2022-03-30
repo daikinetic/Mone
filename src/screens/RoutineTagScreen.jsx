@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { 
-    View, StyleSheet, TouchableOpacity, Text, TextInput, Alert 
+import {
+    View, StyleSheet, TouchableOpacity, Text, TextInput, Alert
 } from 'react-native';
 
 import firebase from 'firebase';
@@ -9,19 +9,19 @@ import firebase from 'firebase';
 import HomeButton from '../components/HomeButton';
 //Making に飛ばす用のボタンコンポネント
 import EditButton from '../components/EditButton';
-//import FlatList を返すコンポネント (消去用のボタン含む)
+//FlatList を返すコンポネント (消去用のボタン含む)
 import DefaultRoutineTag from '../components/DefaultRoutineTag';
 
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-import { AntDesign } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 
 export default function RoutineTagScreen (props) {
     const { navigation } = props;
     const [headers, setHeaders] = useState([]);
-    
+
     useEffect(() => {
         const db = firebase.firestore();
         const { currentUser } = firebase.auth();
@@ -31,7 +31,7 @@ export default function RoutineTagScreen (props) {
             unsubscribe = ref.onSnapshot((snapshot) => {
                 const userHeaders = [];
                 snapshot.forEach((doc) => {
-                    console.log(doc.id, doc.data());
+                    // console.log(doc.id, doc.data());
                     const data = doc.data();
                     userHeaders.push({
                         id: doc.id,
@@ -40,12 +40,12 @@ export default function RoutineTagScreen (props) {
                 });
                 setHeaders(userHeaders);
             }, (error) => {
-                console.log(error);
+                // console.log(error);
                 Alert.alert('データの読み込みに失敗しました');
             });
         }
         return unsubscribe;
-    }, []); 
+    }, []);
 
 
     return (
@@ -53,12 +53,12 @@ export default function RoutineTagScreen (props) {
             <View style={styles.routineTagArea}>
                 <DefaultRoutineTag headers={headers}/>
             </View>
-            
+
             <View style={styles.routineTagFooter}>
                 <HomeButton
                     onPress={() => { navigation.navigate("HomeScreen");} }
                 />
-                <EditButton 
+                <EditButton
                     onPress={() => { navigation.navigate("RoutineTagMakingScreen"); }}
                 />
             </View>
