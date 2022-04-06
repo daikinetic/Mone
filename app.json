@@ -2,7 +2,7 @@
   "expo": {
     "name": "Mone",
     "slug": "Mone",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -25,7 +25,7 @@
         "backgroundImage": "./assets/icon_adaptive_background.png"
       },
       "package": "com.dddaiki.Mone",
-      "versionCode": 2,
+      "versionCode": 3,
       "permissions": []
     },
     "web": {
