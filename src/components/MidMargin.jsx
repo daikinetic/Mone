@@ -9,7 +9,7 @@ export default function MidMargin (props) {
   });
   let height = 0;
   if (taskList[0] > 0) {
-      height = 500*(1-count/(taskList[index]*60));
+      height = 500*(1-(count/(taskList[index]*60)));
   }
   return (
     <View style={styles.midMargin(height)}></View>

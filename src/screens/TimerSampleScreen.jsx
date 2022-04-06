@@ -27,8 +27,8 @@ export default function TimerSampleScreen(props) {
       return;
     }
     intervalRef.current = setInterval(() => {
-      setCount(c => c + 0.100);
-    }, 100);
+      setCount(c => c + 1);
+    }, 1000);
   };
   const stop = () => {
     if (intervalRef.current === null) {
